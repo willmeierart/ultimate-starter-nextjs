@@ -1,14 +1,13 @@
 {
-  "name": "v04-nextjs-v01",
+  "name": "Agency Zero Starter v0.4",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "first attempt with next.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "next"
+    "dev": "next",
+    "build": "next build"
   },
-  "keywords": [],
-  "author": "",
+  "author": "Will Meier",
   "license": "ISC",
   "dependencies": {
     "apollo-client-preset": "^1.0.3",
