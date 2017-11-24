@@ -1,24 +1,53 @@
 {
-  "name": "Agency Zero Starter v0.4",
+  "name": "agency-zero-starter-v0.4",
   "version": "1.0.0",
   "description": "first attempt with next.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "next",
-    "build": "next build"
+    "dev": "node server/index.js",
+    "next": "next",
+    "build": "next build",
+    "start": "NODE_ENV=production node server/index.js"
   },
   "author": "Will Meier",
   "license": "ISC",
+  "standard": {
+    "parser": "babel-eslint",
+    "ignore": [
+      "**/node_modules/**"
+    ]
+  },
   "dependencies": {
     "apollo-client-preset": "^1.0.3",
+    "autoprefixer": "^7.1.6",
+    "babel-plugin-module-resolver": "^3.0.0",
+    "babel-plugin-wrap-in-js": "^1.1.1",
+    "compression": "^1.7.1",
     "express": "^4.16.2",
+    "glob": "^7.1.2",
     "graphql": "^0.11.7",
     "graphql-anywhere": "^4.0.1",
     "graphql-tag": "^2.5.0",
     "isomorphic-fetch": "^2.2.1",
+    "loaders.css": "^0.1.2",
     "next": "^4.1.4",
+    "next-routes": "^1.1.0",
+    "node-sass": "^4.7.2",
+    "normalize.css": "^7.0.0",
+    "postcss-easy-import": "^3.0.0",
+    "postcss-loader": "^2.0.9",
+    "raf": "^3.4.0",
+    "raw-loader": "^0.5.1",
     "react": "^16.1.1",
     "react-apollo": "^2.0.1",
-    "react-dom": "^16.1.1"
+    "react-dom": "^16.1.1",
+    "react-loaders": "^3.0.1",
+    "sass-loader": "^6.0.6"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.0.2",
+    "babel-plugin-inline-react-svg": "^0.5.2",
+    "prop-types": "^15.6.0",
+    "standard": "^10.0.3"
   }
 }

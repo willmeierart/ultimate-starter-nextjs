@@ -1,8 +1,8 @@
-import Link from 'next/link'
+import Layout from '../components/layout'
+import { AZ_Logo_01 } from '../components/assets/Zero'
 
-const Index = () => (
-  <div>
-  </div>
+export default () => (
+  <Layout title='Home'>
+    <div><AZ_Logo_01/></div>
+  </Layout>
 )
-
-export default Index
