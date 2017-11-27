@@ -15,3 +15,5 @@ Safe to say this one is ready to start developing on top of...
 composed by Will Meier at Agency Zero
 
 😎
+
+*note: even though there are minimal dependencies assumed in this one, there are still probably more features than needed. delete as unneeded (i.e. sass config, etc. if you wind up just using styled-jsx)*
