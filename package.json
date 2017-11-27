@@ -1,7 +1,7 @@
 {
-  "name": "agency-zero-starter-v0.4",
+  "name": "agency-zero-starter-v4",
   "version": "1.0.0",
-  "description": "first attempt with next.js",
+  "description": "using next.js and apollo",
   "scripts": {
     "test": "jest",
     "dev": "node server/index.js",

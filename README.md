@@ -7,7 +7,7 @@ This fourth iteration uses [Next.js](https://github.com/zeit/next.js) - an isomo
 
 Other features include:
 - Apollo 2 as a GraphQL client
-- Redux for internal state management
+- Redux for internal state management (if necessary)
 - Sass (and pre/post-css webpack config) as an optional global fallback to Next's default 'Styled-JSX'
 
 Safe to say this one is ready to start developing on top of...
