@@ -1,8 +1,8 @@
 import App from '../components/App'
 
 export default () => (
-  <App title="About">
+  <App title='About'>
     <div>About</div>
-    <style jsx global>{``}</style>
+    <style jsx>{``}</style>
   </App>
 )
