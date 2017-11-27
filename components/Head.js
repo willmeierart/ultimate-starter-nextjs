@@ -10,8 +10,8 @@ export default (props = initialProps) => {
   return (
     <Head>
       <title>{title}</title>
-      <meta charset='utf-8'/>
-      <meta name='viewport' content={`inital-scale=${initialScale || initialProps.initialScale }, width=device-width`}/>
+      <meta charset='utf-8' />
+      <meta name='viewport' content={`inital-scale=${initialScale || initialProps.initialScale}, width=device-width`}/>
     </Head>
   )
 }
