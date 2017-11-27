@@ -1,8 +1,8 @@
-import Layout from '../components/layout'
-import { AZ_Logo_01 } from '../components/assets/Zero'
+import App from '../components'
+import { AzLogo01 } from '../components/assets/Zero'
 
 export default () => (
-  <Layout title='Home'>
-    <div><AZ_Logo_01/></div>
-  </Layout>
+  <App title='Home'>
+    <div><AzLogo01 /></div>
+  </App>
 )
