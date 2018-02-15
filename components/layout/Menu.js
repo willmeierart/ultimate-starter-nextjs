@@ -4,7 +4,9 @@ export default () => {
   // }
   return (
     <div>
-      <div>{/* { renderList() } */}</div>
+      <div>
+        {/* { renderList() } */}
+      </div>
       <style jsx>{``}</style>
     </div>
   )
