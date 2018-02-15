@@ -3,7 +3,7 @@
 // import withData from '../lib/withData'
 // import { allFadeColors, allPaintings } from '../lib/queries'
 // import { formatColors } from '../lib/_utils'
-import App from '../components'
+import App from '../components/App'
 import { AzLogo01 } from '../components/assets/ZeroLogos'
 
 // include boilerplate for global loader dependent on graphql req's:

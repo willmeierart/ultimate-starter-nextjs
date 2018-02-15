@@ -10,7 +10,7 @@ export default ({ children, title }) => (
   <div>
     <Head title={title} />
     <Header />
-    {children}
+    { children }
     <Footer />
     <style jsx global>{``}</style>
     {/* <style dangerouslySetInnerHTML={{ __html: globalStyles }} /> */}
