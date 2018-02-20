@@ -1,10 +1,10 @@
-import App from '../components/App'
+import AppProvider from '../lib/redux/AppProvider'
 
 const About = () => (
-  <App title='About'>
+  <AppProvider title='About'>
     <div>About</div>
     <style jsx>{``}</style>
-  </App>
+  </AppProvider>
 )
 
 export default About

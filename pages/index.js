@@ -4,15 +4,14 @@
 // import { allFadeColors, allPaintings } from '../lib/queries'
 // import { formatColors } from '../lib/_utils'
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import App from '../components/App'
+import AppProvider from '../lib/redux/AppProvider'
 import { AzLogo01 } from '../components/assets/ZeroLogos'
 
 // include boilerplate for global loader dependent on graphql req's:
-class HomePage extends Component {
+export default class HomePage extends Component {
   render () {
     return (
-      <App title='Home'>
+      <AppProvider title='Home'>
         <div>
           {/* {allThings1.loading || allThings2.loading ? (
             <div className='loader-wrapper'>
@@ -28,20 +27,10 @@ class HomePage extends Component {
               display: flex; justify-content: center; align-items:center;
             } */}
         `}</style>
-      </App>
+      </AppProvider>
     )
   }
 }
-
-const mapStateToProps = async state => {
-
-}
-
-const mapDispatchToProps = async dispatch => {
-
-}
-
-connect(mapStateToProps, mapDispatchToProps)(HomePage)
 
 // example of GraphQL with multiple queries composed:
 // export default withData(

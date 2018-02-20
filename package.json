@@ -47,6 +47,7 @@
     "react-apollo": "^2.0.4",
     "react-dom": "^16.2.0",
     "react-loaders": "^3.0.1",
+    "redux-thunk": "^2.2.0",
     "sass-loader": "^6.0.6"
   },
   "devDependencies": {
