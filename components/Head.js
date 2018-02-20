@@ -14,6 +14,7 @@ const CustomHead = (props = initialProps) => {
     <meta key='viewport' name='viewport' content={`inital-scale=${initialScale || initialProps.initialScale}, width=device-width, shrink-to-fit=no`} />
     <meta key='meta-title' name='title' content='Agency Zero' />
     <link rel='shortcut icon' href='/favicon.ico' />
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
     {/* <script async src='https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXXX-X' /> */}
   </Head>
 }
