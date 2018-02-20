@@ -1,8 +1,10 @@
 import App from '../components/App'
 
-export default () => (
+const Contact = () => (
   <App title='Contact'>
     <div>Contact</div>
     <style jsx>{``}</style>
   </App>
 )
+
+export default Contact

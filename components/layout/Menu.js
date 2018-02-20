@@ -1,4 +1,4 @@
-export default () => {
+const Menu = () => {
   // const renderList = (set, element) => {
   //   return set.map((each, i) => (<element key={i}>{ each }</element>))
   // }
@@ -11,3 +11,5 @@ export default () => {
     </div>
   )
 }
+
+export default Menu

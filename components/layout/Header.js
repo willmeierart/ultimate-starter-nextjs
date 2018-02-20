@@ -1,8 +1,10 @@
 import Link from 'next/link'
 
-export default () => (
+const Header = () => (
   <div>
     <div></div>
     <style jsx>{``}</style>
   </div>
 )
+
+export default Header

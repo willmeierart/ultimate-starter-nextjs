@@ -6,7 +6,7 @@ const initialProps = {
   initialScale: '1.0'
 }
 
-export default (props = initialProps) => {
+const CustomHead = (props = initialProps) => {
   const { title, initialScale } = props
   return <Head>
     <title key='title'>{title}</title>
@@ -17,3 +17,5 @@ export default (props = initialProps) => {
     {/* <script async src='https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXXX-X' /> */}
   </Head>
 }
+
+export default CustomHead

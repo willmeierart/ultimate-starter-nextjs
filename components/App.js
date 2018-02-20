@@ -6,7 +6,7 @@ import Footer from './layout/Footer'
 
 // import globalStyles from '../../styles/index.scss'
 
-export default ({ children, title }) => (
+const App = ({ children, title }) => (
   <div>
     <Head title={title} />
     <Header />
@@ -16,3 +16,5 @@ export default ({ children, title }) => (
     {/* <style dangerouslySetInnerHTML={{ __html: globalStyles }} /> */}
   </div>
 )
+
+export default App
