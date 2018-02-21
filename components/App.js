@@ -9,9 +9,11 @@ import Footer from './layout/Footer'
 const App = ({ children, title }) => (
   <div>
     <Head title={title} />
-    <Header />
-    { children }
-    <Footer />
+    <div>
+      <Header />
+      <main>{ children }</main>
+      <Footer />
+    </div>
     <style jsx global>{``}</style>
     {/* <style dangerouslySetInnerHTML={{ __html: globalStyles }} /> */}
   </div>
