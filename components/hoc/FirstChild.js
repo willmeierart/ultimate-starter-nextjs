@@ -1,3 +1,5 @@
+// for wrapper components that take 'component' as a prop, allows stripping of that outer layer
+
 import React from 'react'
 
 export default function FirstChild (props) {
