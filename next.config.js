@@ -33,6 +33,14 @@ module.exports = {
         ]
       }
     )
+    // ENABLE THE FOLLOWING IF BUILD FAILS ON REMOTE SERVER / APP DOESN'T WORK ON IE:
+    // config.plugins = config.plugins.filter(plugin => {
+    //   if (plugin.name === 'UglifyJsPlugin') {
+    //     return false
+    //   } else {
+    //     return true
+    //   }
+    // })
     return config
   }
 }
