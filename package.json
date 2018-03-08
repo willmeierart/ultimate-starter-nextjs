@@ -3,11 +3,18 @@
   "version": "1.0.0",
   "description": "using next.js and apollo",
   "scripts": {
-    "test": "jest",
+    "test": "NODE_ENV=test jest",
     "dev": "node server/index.js",
     "next": "next",
     "build": "next build",
-    "start": "NODE_ENV=production node server/index.js"
+    "start": "NODE_ENV=production node server/index.js",
+    "docker:build": "docker build -t <containername> .",
+    "docker:clean": "docker rm -f <containername> || true",
+    "docker:run": "docker run -p 7878:3000 -d --name <containername> <containername> && npm run docker:logs",
+    "docker:stop": "docker stop <containername>",
+    "docker:start": "docker start <containername> && npm run docker:logs",
+    "docker:logs": "docker logs -f <containername>",
+    "deploy": "npm run docker:build && npm run docker:clean && npm run docker:run"
   },
   "jest": {
     "setupFiles": [
@@ -56,7 +63,8 @@
     "babel-eslint": "^8.2.1",
     "babel-plugin-inline-react-svg": "^0.5.2",
     "enzyme": "^3.3.0",
-    "jest": "^21.2.1",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "jest": "^22.4.2",
     "prop-types": "^15.6.0",
     "react-addons-test-utils": "^15.6.2",
     "react-test-renderer": "^16.2.0",
