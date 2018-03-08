@@ -34,6 +34,7 @@
     "graphql-anywhere": "^4.1.5",
     "graphql-tag": "^2.7.3",
     "isomorphic-fetch": "^2.2.1",
+    "isomorphic-unfetch": "^2.0.0",
     "loaders.css": "^0.1.2",
     "next": "^4.2.3",
     "next-routes": "^1.3.0",
