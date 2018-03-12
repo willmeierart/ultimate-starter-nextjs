@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "using next.js and apollo",
   "scripts": {
-    "test": "NODE_ENV=test jest --no-cache",
+    "test": "NODE_ENV=test jest",
     "dev": "node server/index.js",
     "next": "next",
     "build": "next build",
@@ -15,11 +15,6 @@
     "docker:start": "docker start <containername> && npm run docker:logs",
     "docker:logs": "docker logs -f <containername>",
     "deploy": "npm run docker:build && npm run docker:clean && npm run docker:run"
-  },
-  "jest": {
-    "setupFiles": [
-      "_tests/shim.js"
-    ]
   },
   "author": "Will Meier",
   "license": "ISC",
@@ -55,6 +50,7 @@
     "react-apollo": "^2.0.4",
     "react-dom": "^16.2.0",
     "react-loaders": "^3.0.1",
+    "react-redux": "^5.0.7",
     "redux-promise": "^0.5.3",
     "redux-thunk": "^2.2.0",
     "sass-loader": "^6.0.6"
