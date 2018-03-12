@@ -2,3 +2,7 @@ stable pkg versions (updating 03/08/18):
   next: "next": "^4.2.3"
   react: "react": "^16.2.0"
   react-dom: "react-dom": "^16.2.0",
+
+
+[] refactor to use semantic html
+[] refactor to include PropTypes

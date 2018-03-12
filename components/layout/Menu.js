@@ -3,8 +3,8 @@ const Menu = () => {
   //   return set.map((each, i) => (<element key={i}>{ each }</element>))
   // }
   return (
-    <div>
-      <div>
+    <div className='menu-outer'>
+      <div className='menu-inner'>
         {/* { renderList() } */}
       </div>
       <style jsx>{``}</style>

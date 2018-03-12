@@ -1,8 +1,8 @@
 import Link from 'next/link'
 
 const Header = () => (
-  <div>
-    <div></div>
+  <div className='header-outer'>
+    <div className='header-inner'></div>
     <style jsx>{``}</style>
   </div>
 )

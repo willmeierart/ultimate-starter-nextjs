@@ -2,7 +2,9 @@ import AppProvider from '../lib/redux/AppProvider'
 
 const About = () => (
   <AppProvider title='About'>
-    <div>About</div>
+    <section>
+      <div className='page-title'>About</div>
+    </section>
     <style jsx>{``}</style>
   </AppProvider>
 )

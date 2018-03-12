@@ -20,7 +20,7 @@ export default class HomePage extends Component {
   render () {
     return (
       <AppProvider title='Home'>
-        <div>
+        <section>
           {/* {allThings1.loading || allThings2.loading ? (
             <div className='loader-wrapper'>
               <Loader type='line-spin-fade-loader' active />
@@ -28,7 +28,7 @@ export default class HomePage extends Component {
           ) : ( */}
           <AzLogo01 />
           {/* )} */}
-        </div>
+        </section>
         <style jsx>{`
             {/* .loader-wrapper {
               width:100%; height:100%;

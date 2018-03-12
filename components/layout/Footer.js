@@ -1,6 +1,6 @@
 const Footer = () => (
-  <div>
-    <div></div>
+  <div className='footer-outer'>
+    <div className='footer-inner'></div>
     <style jsx>{``}</style>
   </div>
 )

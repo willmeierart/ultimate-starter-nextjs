@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 export const Title = () => (
   <Link href='/'>
-    <div> ZERO </div>
+    <a> ZERO </a>
     <style jsx>{``}</style>
   </Link>
 )

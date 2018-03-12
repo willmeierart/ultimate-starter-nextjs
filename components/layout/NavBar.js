@@ -1,8 +1,8 @@
 const NavBar = () => (
-  <div>
-    <div></div>
+  <nav>
+    <div className='navbar-inner'></div>
     <style jsx>{``}</style>
-  </div>
+  </nav>
 )
 
 export default NavBar
