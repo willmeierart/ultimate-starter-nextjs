@@ -6,7 +6,7 @@
 import React, { Component } from 'react'
 import AppProvider from '../lib/redux/AppProvider'
 import { AzLogo01 } from '../components/assets/ZeroLogos'
-import fetch from 'isomorphic-fetch'
+// import fetch from 'isomorphic-fetch'
 
 // include boilerplate for global loader dependent on graphql req's:
 export default class HomePage extends Component {
