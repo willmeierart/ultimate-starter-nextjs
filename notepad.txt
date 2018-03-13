@@ -4,5 +4,12 @@ stable pkg versions (updating 03/08/18):
   react-dom: "react-dom": "^16.2.0",
 
 
-[] refactor to use semantic html
-[] refactor to include PropTypes
+personal code-style points of improvement:
+  [] don't forget semantic html
+    [] also image alt's, other aria-type html props
+  [] use proptypes
+  [] clear comments in complex parts
+    [] likewise document process alongside creating it
+  [] use more robust debugging practice than just console logs everywhere
+  [] move toward TDD
+

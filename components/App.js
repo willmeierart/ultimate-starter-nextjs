@@ -1,4 +1,5 @@
 // main wrapper component - layout, universal styles, etc.
+import PropTypes from 'prop-types'
 import Link from 'next/link'
 import Head from './Head'
 import Header from './layout/Header'
@@ -44,3 +45,7 @@ const App = ({ children, title }) => (
 )
 
 export default App
+
+App.PropTypes = {
+  title: PropTypes.string.isRequired
+}
