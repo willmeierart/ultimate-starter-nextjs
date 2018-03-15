@@ -43,3 +43,7 @@ export default class TransitionMotionWrapper extends Component {
   }
 }
 
+TransitionMotionWrapper.propTypes = {
+  k: PropTypes.string.isRequired(),
+  width: PropTypes.number.isRequired()
+}

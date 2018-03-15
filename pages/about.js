@@ -1,7 +1,9 @@
 import AppProvider from '../lib/redux/AppProvider'
+import Head from '../components/Head'
 
 const About = () => (
-  <AppProvider title='About'>
+  <AppProvider>
+    <Head title='About' />
     <section>
       <div className='page-title'>About</div>
     </section>

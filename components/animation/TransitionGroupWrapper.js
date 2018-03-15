@@ -37,6 +37,6 @@ export default class TransitionGroupWrapper extends Component {
   }
 }
 
-TransitionGroupWrapper.PropTypes = {
+TransitionGroupWrapper.propTypes = {
   duration: PropTypes.number.isRequired
 }

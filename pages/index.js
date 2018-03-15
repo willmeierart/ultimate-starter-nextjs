@@ -6,6 +6,7 @@
 import React, { Component } from 'react'
 import AppProvider from '../lib/redux/AppProvider'
 import { AzLogo01 } from '../components/assets/ZeroLogos'
+import Head from '../components/Head'
 // import fetch from 'isomorphic-fetch'
 
 // include boilerplate for global loader dependent on graphql req's:
@@ -19,7 +20,8 @@ export default class HomePage extends Component {
   }
   render () {
     return (
-      <AppProvider title='Home'>
+      <AppProvider>
+        <Head title='Home' />
         <section>
           {/* {allThings1.loading || allThings2.loading ? (
             <div className='loader-wrapper'>
