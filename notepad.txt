@@ -13,3 +13,6 @@ personal code-style points of improvement:
   [] use more robust debugging practice than just console logs everywhere
   [] move toward TDD
 
+
+
+need to update README
