@@ -3,8 +3,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { checkIfMobile, getVPDims } from '../lib/redux/actions'
-import Header from './layout/Header'
-import Footer from './layout/Footer'
+import Header from './core/Header'
+import Footer from './core/Footer'
 
 // import globalStyles from '../../styles/index.scss'
 

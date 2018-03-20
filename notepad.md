@@ -8,6 +8,7 @@ personal code-style points of improvement:
   [] don't forget semantic html
     [] also image alt's, other aria-type html props
   [] use proptypes
+  [] figure out how to use ChildFactory for transitiongroup
   [] clear comments in complex parts
     [] likewise document process alongside creating it
   [] use more robust debugging practice than just console logs everywhere
