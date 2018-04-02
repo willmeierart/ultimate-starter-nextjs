@@ -4,4 +4,4 @@ node_modules
 .env
 examples.txt
 .vscode
-notepad.txt
+notepad.*
