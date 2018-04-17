@@ -17,12 +17,11 @@
       }
     ]
   ],
+  "presets": ["next/babel"],
   "ignore": [],
   "env": {
     "test": {
-      "presets": [["env", { "modules": "commonjs" } ], "next/babel"]
-    },
-    "dev": { "presets": ["next/babel"] },
-    "production": { "presets": ["next/babel"] }    
+      "presets": [["env", { "modules": "commonjs" }], "next/babel"]
+    }
   }
 }
