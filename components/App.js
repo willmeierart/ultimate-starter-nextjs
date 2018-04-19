@@ -54,8 +54,8 @@ class App extends Component {
 
 function mapStateToProps (state) {
   return {
-    isMobile: state.splash.isMobile,
-    dims: state.splash.dims
+    isMobile: state.env.isMobile,
+    dims: state.env.dims
   }
 }
 
