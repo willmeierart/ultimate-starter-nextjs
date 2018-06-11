@@ -20,4 +20,4 @@ Router.add('main', '/:slug', '')  // <<< transition example = this only
   // .add('work', '/work/:slug', '')
   // .add('services', '/services/:slug', '')
 
-export default Router
+module.exports = Router

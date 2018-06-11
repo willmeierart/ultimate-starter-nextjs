@@ -5,7 +5,7 @@ import { binder } from '../lib/_utils'
 export default class CustomDocument extends Document {
   constructor (props) {
     super(props)
-    binder(this, ['preventScrollNav'])
+    // binder(this, ['preventScrollNav'])
   }
   static getInitialProps ({ renderPage }) {
     const { html, head, errorHtml, chunks } = renderPage()
