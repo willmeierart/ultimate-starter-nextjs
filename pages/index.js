@@ -1,10 +1,7 @@
 // import { graphql, compose } from 'react-apollo'
 // import Loader from 'react-loaders'
-// import withData from '../lib/withData'
-// import { allFadeColors, allPaintings } from '../lib/queries'
-// import { formatColors } from '../lib/_utils'
+// import withData from '../lib/apollo/withData'
 import React, { Component } from 'react'
-import AppProvider from '../lib/redux/AppProvider'
 import { AzLogo01 } from '../components/assets/ZeroLogos'
 import Head from '../components/Head'
 // import fetch from 'isomorphic-fetch'
@@ -20,7 +17,7 @@ export default class HomePage extends Component {
   // }
   render () {
     return (
-      <AppProvider>
+      <main>
         <Head title='Home' />
         <section>
           {/* {allThings1.loading || allThings2.loading ? (
@@ -37,7 +34,7 @@ export default class HomePage extends Component {
               display: flex; justify-content: center; align-items:center;
             } */}
         `}</style>
-      </AppProvider>
+      </main>
     )
   }
 }

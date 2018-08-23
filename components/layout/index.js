@@ -2,13 +2,13 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { checkIfMobile, getVPDims } from '../lib/redux/actions'
-import Header from './core/Header'
-import Footer from './core/Footer'
+import { checkIfMobile, getVPDims } from '../../lib/redux/actions'
+import Header from './Header'
+import Footer from './Footer'
 
 // import globalStyles from '../../styles/index.scss'
 
-class App extends Component {
+class Layout extends Component {
   componentDidMount () {
 
   }
@@ -20,7 +20,7 @@ class App extends Component {
           <header>
             <Header />
           </header>
-          <main>{ children }</main>
+          <section>{ children }</section>
           <footer>
             <Footer />
           </footer>
@@ -44,9 +44,8 @@ function mapDispatchToProps (dispatch) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App)
-// export default App
+export default connect(mapStateToProps, mapDispatchToProps)(Layout)
+// export default Layout
 
-App.propTypes = {
-  title: PropTypes.string.isRequired
+Layout.propTypes = {
 }
