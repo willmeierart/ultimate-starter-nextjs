@@ -14,7 +14,8 @@
     "docker:stop": "docker stop <containername>",
     "docker:start": "docker start <containername> && npm run docker:logs",
     "docker:logs": "docker logs -f <containername>",
-    "deploy": "npm run docker:build && npm run docker:clean && npm run docker:run"
+    "deploy": "npm run docker:build && npm run docker:clean && npm run docker:run",
+    "export": "next build && next export"
   },
   "author": "Will Meier",
   "license": "ISC",
