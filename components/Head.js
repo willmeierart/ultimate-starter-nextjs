@@ -16,6 +16,16 @@ const CustomHead = (props = initialProps) => {
     <link rel='shortcut icon' href='/static/zero.ico' />
     <script defer src='https://use.fontawesome.com/releases/v5.0.6/js/all.js' />
     {/* <script async src='https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXXX-X' /> */}
+    {/* <style dangerouslySetInnerHTML={{
+      __html: `
+      @font-face {
+        font-family: 'Montserrat';
+        src: url('/static/assets/fonts/Montserrat-Bold.eot');
+        src: url('/static/assets/fonts/Montserrat-Bold.woff') format('woff');
+        font-weight: bold;
+        font-style: normal;
+      }
+    `}} /> */}
   </Head>
 }
 
