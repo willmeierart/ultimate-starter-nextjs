@@ -1,0 +1,39 @@
+nginx:
+  build: ./nginx
+  links:
+    - app1:app1
+    - app2:app2
+  ports:
+    - "80:80"
+    - "443:443"
+  volumes:
+    - /etc/nginx/psw:/etc/nginx/psw
+    - /etc/nginx/ssl:/etc/nginx/ssl
+  environment:
+    - DOMAIN_NAME=$PROJECT_NAME.com
+app1:
+  build: .
+  links:
+    - redis
+  ports:
+    - "5000"
+  volumes:
+    - /tmp:/tmp
+  environment:
+    - MODE=prod
+    - CLOUDWATCH_REGION=us-west-2
+app2:
+  build: .
+  links:
+    - redis
+  ports:
+    - "5000"
+  volumes:
+    - /tmp:/tmp
+  environment:
+    - MODE=prod
+    - CLOUDWATCH_REGION=us-west-2
+redis:
+  image: redis
+  ports:
+    - "6379"

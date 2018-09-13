@@ -1,13 +1,22 @@
-FROM node:boron
+# Set the base image to Ubuntu
+FROM ubuntu:18.04
 
-RUN mkdir -p /root/site
-WORKDIR /root/site
+RUN /_scripts/app/initApp.sh
 
-COPY package.json /root/site
+RUN mkdir -p /root/$PROJECT_NAME
+WORKDIR /root/$PROJECT_NAME
+
+COPY . /root/$PROJECT_NAME
+
 RUN npm install
 
-COPY . /root/site
-RUN npm run build
+
+
+# COPY ./_scripts/docker-entrypoint.sh /
+ENTRYPOINT ["/_deploy/docker-entrypoint.sh"]
+
+
 
 EXPOSE 3000
-CMD ["npm", "start"]
+
+CMD ["pm2", "start npm --no-automation --name $PROJECT_NAME -- run start"]

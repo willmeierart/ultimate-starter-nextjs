@@ -1,0 +1,2 @@
+./installDocker.sh
+./installJenkins.sh
