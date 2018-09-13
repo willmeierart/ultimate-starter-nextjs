@@ -1,0 +1,32 @@
+nginx:
+  # build: ./nginx
+  image: nginx:alpine
+  ports:
+    - "8000:80"
+    - "443:443"
+  volumes:
+    - ./etc/nginx/conf.d/nginx.conf
+    # - /etc/nginx/psw:/etc/nginx/psw
+    # - /etc/nginx/ssl:/etc/nginx/ssl
+  depends_on:
+    -nodejs
+  # environment:
+  #   - DOMAIN_NAME=$PROJECT_NAME.com
+app:
+  image: node:alpine
+  environment:
+    NODE_ENV: production
+  working_dir: /root/$PROJECT_NAME
+  restart: always
+  build: .
+  links:
+    - redis
+  ports:
+    - "5000"
+  volumes:
+    - /tmp:/tmp
+  
+redis:
+  image: redis
+  ports:
+    - "6379"
