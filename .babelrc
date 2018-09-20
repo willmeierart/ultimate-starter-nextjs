@@ -15,13 +15,6 @@
       {
         "extensions": ["css$", "scss$"]
       }
-    ],
-    [
-      "styled-jsx/babel", {
-        "plugins": [
-          ["style-jsx-plugin-postcss", {"grid": true}]
-        ]
-      }
     ]
   ],
   "presets": ["next/babel"],
