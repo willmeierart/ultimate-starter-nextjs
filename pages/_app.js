@@ -4,6 +4,7 @@ import { PageTransition } from 'next-page-transitions'
 import { Provider } from 'react-redux'
 import withReduxStore from '../lib/redux/withReduxStore'
 import Layout from '../components/layout'
+import GlobalContextProvider from '../components/contextProviders/GlobalContextProvider'
 
 class MyApp extends App {
   static async getInitialProps ({ Component, router, ctx }) {
@@ -19,6 +20,12 @@ class MyApp extends App {
     // This is needed to render errors correctly in development / production
     super.componentDidCatch(error, errorInfo)
   }
+
+  stateManagementSwitcher = () => (
+    this.stateManagement === 'REDUX'
+      ? <Provider store={this.props.reduxStore}>{ this.props.children }</Provider>
+      : <GlobalContextProvider>{ this.props.children }</GlobalContextProvider>
+  )
 
   render () {
     const { Component, pageProps, reduxStore } = this.props

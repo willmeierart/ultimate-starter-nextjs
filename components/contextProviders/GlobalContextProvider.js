@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 
-const ThisContext = React.createContext()
+const GlobalContext = React.createContext()
 
-class Provider extends Component {
+class GlobalContextProvider extends Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -16,13 +16,13 @@ class Provider extends Component {
 
   render () {
     return (
-      <ThisContext.Provider value={{
+      <GlobalContext.Provider value={{
         val: this.state.val,
         changeVal: this.changeVal}}>
         { this.props.children }
-      </ThisContext.Provider>
+      </GlobalContext.Provider>
     )
   }
 }
 
-export default Provider
+export default GlobalContextProvider
