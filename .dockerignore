@@ -1,7 +1,6 @@
 .git
 .eslintrc.js
 .results
-_scripts
 *Dockerfile*
 *docker-compose*
 node_modules
