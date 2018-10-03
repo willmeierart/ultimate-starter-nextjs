@@ -4,7 +4,6 @@
 # then
 #   docker image build -t $1 .
 # else
-  echo -e "what should this docker image be called?"
-  cd ../../
+  # echo "what should this docker image be called?"
   docker image build -t $1 .
 # fi

@@ -7,6 +7,9 @@ FROM ubuntu:18.04
 # (tbd)
 
 ENV DEBIAN_FRONTEND noninteractive
+# ENV NVM_DIR ~/.nvm
+ENV NVM_DIR /usr/local/nvm
+
 ENV PROJECT_NAME client
 # Or a specific project name other than 'client'
 
@@ -16,10 +19,11 @@ RUN apt-get update \
   && apt-get -y install nginx \
   && apt-get -y install curl
 
-RUN echo -ne '\n \n' | curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
-  #&& export NVM_DIR="$HOME/.nvm" \
+RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
+  #&& "export NVM_DIR="$HOME/.nvm" \
   #&& [ -s "$NVM_DIR/nvm.sh" ] \
   #&& \. "$NVM_DIR/nvm.sh"
+RUN /bin/bash -c "source $NVM_DIR/nvm.sh && nvm i --lts && nvm use --lts"
 
 RUN nvm i --lts \
   && nvm use --lts \
