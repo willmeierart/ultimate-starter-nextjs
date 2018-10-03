@@ -2,16 +2,24 @@
 
 FROM ubuntu:18.04
 # Set the base image to Ubuntu
+#......OR:
+# FROM nginx:latest
+# (tbd)
 
 ENV PROJECT_NAME client
 # Or a specific project name other than 'client'
 ENV HTTP_PROXY 80:3000
 ENV HTTPS_PROXY 443:3000
 
+RUN apt update && \
+  apt-get install git -y \
+  && pwd && ls -a
+
+
 RUN git config --global user.email "willmeierart@gmail.com" \
     && git config --global user.name "willmeierart" \
     # change to your own info ^
-    && /_scripts/app/initApp.sh ${PROJECT_NAME} \
+    && ./_scripts/app/initApp.sh ${PROJECT_NAME} \
     # run init script
     && mkdir -p /root/${PROJECT_NAME}
 
@@ -36,4 +44,6 @@ EXPOSE 80 443 3000
 # still need to use -p to open/forward on host
 
 
-CMD ["pm2", "start npm --no-automation --name $PROJECT_NAME -- run start"]
+CMD ["pm2", "start npm --no-automation --name ${PROJECT_NAME} -- run start"]
+
+# >>> things that change the most toward the bottom of file
