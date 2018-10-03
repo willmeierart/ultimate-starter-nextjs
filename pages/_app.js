@@ -6,6 +6,12 @@ import withReduxStore from '../lib/redux/withReduxStore'
 import Layout from '../components/layout'
 import GlobalContextProvider from '../components/contextProviders/GlobalContextProvider'
 
+const StateMgmtSwitch = ({ mode, store }) => (
+  mode === 'REDUX'
+    ? <Provider store={store}>{this.props.children}</Provider>
+    : <GlobalContextProvider>{this.props.children}</GlobalContextProvider>
+)
+
 class MyApp extends App {
   static async getInitialProps ({ Component, router, ctx }) {
     let pageProps = {}
@@ -21,23 +27,19 @@ class MyApp extends App {
     super.componentDidCatch(error, errorInfo)
   }
 
-  stateManagementSwitcher = () => (
-    this.stateManagement === 'REDUX'
-      ? <Provider store={this.props.reduxStore}>{ this.props.children }</Provider>
-      : <GlobalContextProvider>{ this.props.children }</GlobalContextProvider>
-  )
-
   render () {
     const { Component, pageProps, reduxStore } = this.props
     return (
       <Container>
-        <Provider store={reduxStore}>
+        {/* <Provider store={reduxStore}> */}
+        <StateMgmtSwitch mode='REDUX' store={reduxStore}>
           <Layout>
             <PageTransition timeout={300} classNames='page-transition'>
               <Component {...pageProps} />
             </PageTransition>
           </Layout>
-        </Provider>
+        </StateMgmtSwitch>
+        {/* </Provider> */}
         <style jsx global>{`
             body {
               height: 100vh;
