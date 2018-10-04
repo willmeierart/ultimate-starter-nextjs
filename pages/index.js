@@ -2,11 +2,13 @@
 // import Loader from 'react-loaders'
 // import withData from '../lib/apollo/withData'
 import React, { Component } from 'react'
-import { AzLogo01 } from '../components/__assets/ZeroLogos'
 import Head from '../components/Head'
+import { AzLogo01 } from '../components/__assets/ZeroLogos'
+// import ExampleWorker from '../lib/workers/example.worker'
 // import fetch from 'isomorphic-fetch'
 
-// include boilerplate for global loader dependent on graphql req's:
+// include boilerplate for many possible features:
+
 class HomePage extends Component {
   // static async getInitialProps () {
     // const API_URL = ''
@@ -15,8 +17,25 @@ class HomePage extends Component {
     // const { thing } = json
     // return thing
   // }
+  // constructor (props) {
+  //   super(props)
+  //   this.state = { workerMessage: '' }
+  // }
 
-  componentDidMount () {}
+  // componentDidMount () {
+  //   //example webworker
+  //   this.worker = newExampleWorker()
+  //   this.worker.postMessage('from Host')
+  //   this.worker.addEventListener('message', this.onWorkerMessage)
+  // }
+
+  // componentWillUnmount () {
+  //   this.worker.terminate()
+  // }
+
+  // onWorkerMessage = event => {
+  //   this.setState({ workerMessage: event.data })
+  // }
 
   componentDidCatch () {
     console.log('CUSTOM ERROR HANDLING', error)

@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "using next.js and apollo",
   "scripts": {
+    "analyze:client": "BUNDLE_ANALYZE=client next build",
+    "analyze:server": "BUNDLE_ANALYZE=server next build",
+    "analyze:both": "BUNDLE_ANALYZE=both next build",
     "test": "NODE_ENV=test jest",
     "test:watch": "NODE_ENV=test jest --watch",
     "test:coverage": "NODE_ENV=test jest --coverage",
@@ -20,7 +23,7 @@
     "docker:logs": "docker logs -f <containername>",
     "deploy": "npm run docker:build && npm run docker:clean && npm run docker:run",
     "dc:up": "docker-compose up",
-    "dc:down": "docker-compose down"
+    "dc:down": "docker-compose down",
   },
   "author": "Will Meier",
   "license": "ISC",
@@ -31,11 +34,16 @@
     ]
   },
   "dependencies": {
+    "@zeit/next-bundle-analyzer": "^0.1.2",
+    "@zeit/next-css": "^1.0.1",
+    "@zeit/next-sass": "^1.0.1",
+    "@zeit/next-workers": "^1.0.0",
     "apollo-client-preset": "^1.0.8",
     "autoprefixer": "^7.2.6",
     "babel-core": "^7.0.0-bridge.0",
     "compression": "^1.7.3",
     "dotenv": "^5.0.1",
+    "dotenv-load": "^1.1.0",
     "express": "^4.16.3",
     "graphql": "^0.11.7",
     "graphql-anywhere": "^4.1.19",
@@ -44,6 +52,8 @@
     "isomorphic-unfetch": "^2.1.1",
     "loaders.css": "^0.1.2",
     "next": "^7.0.0",
+    "next-compose-plugins": "^2.1.1",
+    "next-env": "^1.0.1",
     "next-page-transitions": "^1.0.0-alpha.4",
     "next-routes": "^1.4.2",
     "next-url-prettifier": "^1.3.0",
@@ -63,7 +73,8 @@
     "redux-promise": "^0.5.3",
     "redux-thunk": "^2.3.0",
     "sitemap": "^1.13.0",
-    "styled-jsx-plugin-postcss": "^0.1.3"
+    "styled-jsx-plugin-postcss": "^0.1.3",
+    "worker-loader": "^2.0.0"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.6",
