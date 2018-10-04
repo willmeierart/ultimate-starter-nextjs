@@ -14,7 +14,6 @@ const ImperativeRouter = {
       { shallow }
     ),
   onRouteChangeComplete: cb => {
-    console.log(NextRouter)
     NextRouter.router.events.on('routeChangeComplete', cb)
   }
 }

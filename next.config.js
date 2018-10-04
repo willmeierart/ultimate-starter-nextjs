@@ -1,9 +1,11 @@
 const withPlugins = require('next-compose-plugins')
 // const withSass = require('@zeit/next-sass')
+// const withCSS = require('@zeit/next-css')
 const withBundleAnalyzer = require('@zeit/next-bundle-analyzer')
-const withCSS = require('@zeit/next-css')
 const withWorkers = require('@zeit/next-workers')
 const nextEnv = require('next-env')
+const withOptimizedImages = require('next-optimized-images')
+const withOffline = require('next-offline')
 const dotenvLoad = require('dotenv-load')
 dotenvLoad()
 const withNextEnv = nextEnv()
@@ -23,7 +25,15 @@ module.exports = withPlugins([
       }
     }
   }],
-  [withCSS],
   [withWorkers],
-  [withNextEnv]
+  [withNextEnv],
+  [withOptimizedImages],
+  [withOffline]
+  // [withSass, {
+  //   cssModules: true,
+  //   postcssLoaderOptions: {
+  //     parser: true
+  //   }
+  // }],
+  // [withCSS]
 ])

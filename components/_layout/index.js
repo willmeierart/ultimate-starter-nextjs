@@ -13,7 +13,6 @@ class Layout extends Component {
   componentDidCatch () {}
 
   render () {
-    console.log(this.props)
     const { children } = this.props
     return (
       <div className='app-outer'>
