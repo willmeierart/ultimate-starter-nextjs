@@ -23,7 +23,7 @@
     "docker:logs": "docker logs -f <containername>",
     "deploy": "npm run docker:build && npm run docker:clean && npm run docker:run",
     "dc:up": "docker-compose up",
-    "dc:down": "docker-compose down",
+    "dc:down": "docker-compose down"
   },
   "author": "Will Meier",
   "license": "ISC",
