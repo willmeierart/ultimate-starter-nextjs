@@ -1,0 +1,40 @@
+version: '3.1'
+services: # container. same as docker run
+  client: # a friendly name, also DNS name inside network
+    image: node:alpine # optional if you use build
+    # command: # optional, replace default CMD specified by img
+    container_name: client
+    environment: # optional, same as -e in docker run
+      NODE_ENV: production
+    ports: 80:3000
+    # volumes: # optional, same as -v in docker run
+    build:
+      context: ./_deployment/_client
+      dockerfile: client.Dockerfile
+      image: client
+    working_dir: /$HOME/$PROJECT_NAME
+    restart: always
+    build: .
+  server:
+      image: node:alpine # optional if you use build
+    # command: # optional, replace default CMD specified by img
+    container_name: server
+  http-proxy:
+    image: nginx
+    build: 
+      context: ./_deployment/_proxy
+      dockerfile: nginx.Dockerfile
+    container_name: proxy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./_deployment/_proxy/nginx.conf:/etc/nginx/conf.d/default.conf
+      # - /etc/nginx/psw:/etc/nginx/psw
+      # - /etc/nginx/ssl:/etc/nginx/ssl
+    depends_on:
+      -nodejs
+    # environment:
+    #   - DOMAIN_NAME=$PROJECT_NAME.com
+volumes: #optional
+networks: #optional
