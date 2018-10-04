@@ -1,7 +1,8 @@
 .next
+out
 node_modules
+coverage
 *.log
 .env
-examples.txt
 .vscode
 notepad.*

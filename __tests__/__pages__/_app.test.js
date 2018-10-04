@@ -6,11 +6,12 @@ import renderer from 'react-test-renderer'
 import MyApp from '../../pages/_app'
 
 describe('MyApp', () => {
+  const myApp = shallow(<MyApp />)
   it('renders correctly', () => {
-    const myApp = shallow(<MyApp />)
     expect(myApp).toMatchSnapshot()
   })
+
   it('renders the correct `store` component', () => {
-    
+    expect(myApp.find('StateMgmtSwitch')).toExist()
   })
 })

@@ -1,15 +1,18 @@
-import React, { Component } from 'react'
+import React from 'react'
 import App, { Container } from 'next/app'
 import { PageTransition } from 'next-page-transitions'
 import { Provider } from 'react-redux'
 import withReduxStore from '../lib/redux/withReduxStore'
-import Layout from '../components/layout'
-import GlobalContextProvider from '../components/contextProviders/GlobalContextProvider'
+import Layout from '../components/_layout'
+import GlobalContextProvider from '../components/__contextProviders/GlobalContextProvider'
+import mode from '../lib/storeMode'
+// import globalStyles from '../../styles/index.scss'
 
-const StateMgmtSwitch = ({ mode, store, children }) => (
+// handle different store configurations dynamically:
+export const StateMgmtSwitch = ({ store, children }) => (
   mode === 'REDUX'
-    ? <Provider store={store}>{children}</Provider>
-    : <GlobalContextProvider>{children}</GlobalContextProvider>
+    ? <Provider store={store}>{ children }</Provider>
+    : <GlobalContextProvider>{ children }</GlobalContextProvider>
 )
 
 class MyApp extends App {
@@ -18,7 +21,6 @@ class MyApp extends App {
     if (Component.getInitialProps) {
       pageProps = await Component.getInitialProps(ctx)
     }
-
     return {pageProps}
   }
   componentDidCatch (error, errorInfo) {
@@ -31,15 +33,13 @@ class MyApp extends App {
     const { Component, pageProps, reduxStore, children } = this.props
     return (
       <Container>
-        {/* <Provider store={reduxStore}> */}
-        <StateMgmtSwitch mode='REDUX' store={reduxStore} children={children}>
+        <StateMgmtSwitch store={reduxStore} children={children}>
           <Layout>
             <PageTransition timeout={300} classNames='page-transition'>
               <Component {...pageProps} />
             </PageTransition>
           </Layout>
         </StateMgmtSwitch>
-        {/* </Provider> */}
         <style jsx global>{`
             body {
               height: 100vh;
@@ -74,4 +74,4 @@ class MyApp extends App {
   }
 }
 
-export default withReduxStore(MyApp)
+export default mode === 'REDUX' ? withReduxStore(MyApp) : MyApp

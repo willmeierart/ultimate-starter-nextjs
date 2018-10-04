@@ -2,12 +2,12 @@
 // import Loader from 'react-loaders'
 // import withData from '../lib/apollo/withData'
 import React, { Component } from 'react'
-import { AzLogo01 } from '../components/assets/ZeroLogos'
+import { AzLogo01 } from '../components/__assets/ZeroLogos'
 import Head from '../components/Head'
 // import fetch from 'isomorphic-fetch'
 
 // include boilerplate for global loader dependent on graphql req's:
-export default class HomePage extends Component {
+class HomePage extends Component {
   // static async getInitialProps () {
     // const API_URL = ''
     // const res = await fetch(API_URL)
@@ -15,6 +15,13 @@ export default class HomePage extends Component {
     // const { thing } = json
     // return thing
   // }
+
+  componentDidMount () {}
+
+  componentDidCatch () {
+    console.log('CUSTOM ERROR HANDLING', error)
+  }
+
   render () {
     return (
       <main>
@@ -29,10 +36,12 @@ export default class HomePage extends Component {
           {/* )} */}
         </section>
         <style jsx>{`
-            {/* .loader-wrapper {
-              width:100%; height:100%;
-              display: flex; justify-content: center; align-items:center;
-            } */}
+          .loader-wrapper {
+            width:100%; height:100%;
+            display: flex;
+            justify-content: center;
+            align-items:center;
+          }
         `}</style>
       </main>
     )
@@ -46,3 +55,4 @@ export default class HomePage extends Component {
 //     graphql(allThings2, { name: 'allThings2' })
 //   )(HomePage)
 // )
+export default HomePage

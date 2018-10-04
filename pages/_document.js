@@ -11,7 +11,7 @@ export default class CustomDocument extends Document {
     return (
       <html lang='en-US'>
         <Head>
-          {/* <meta name='google-site-verification' content='CCxXT2IRKni8brrPNrEbzFu7ChmofvsFYjPZZiXNtt0' /> */}
+          {/* <meta name='google-site-verification' content='xxxxx' /> */}
         </Head>
         <body>
           <Main />
