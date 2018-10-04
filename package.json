@@ -29,6 +29,7 @@
   "dependencies": {
     "apollo-client-preset": "^1.0.8",
     "autoprefixer": "^7.2.6",
+    "babel-core": "^7.0.0-bridge.0",
     "compression": "^1.7.3",
     "dotenv": "^5.0.1",
     "express": "^4.16.3",
@@ -65,6 +66,7 @@
     "babel-jest": "^22.4.4",
     "babel-plugin-inline-react-svg": "^0.5.4",
     "babel-plugin-module-resolver": "^3.1.1",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
     "babel-plugin-wrap-in-js": "^1.1.1",
     "chai": "^4.1.2",
     "chai-jquery": "^2.0.0",

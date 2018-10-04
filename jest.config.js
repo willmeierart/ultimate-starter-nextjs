@@ -6,5 +6,6 @@ module.exports = {
     '<rootDir>/__tests__/__utils__/',
     '<rootDir>/__tests__/__chai_tests__/'
   ],
+  testURL: 'http://localhost',
   verbose: true
 }
