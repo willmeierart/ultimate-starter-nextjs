@@ -1,5 +1,6 @@
 // literally HTML head - all SEO stuff, etc.
 import Head from 'next/head'
+import PropTypes from 'prop-types'
 
 const initialProps = {
   title: 'Agency Zero',
@@ -19,14 +20,18 @@ const CustomHead = (props = initialProps) => {
     {/* <style dangerouslySetInnerHTML={{
       __html: `
       @font-face {
-        font-family: 'Montserrat';
-        src: url('/static/assets/fonts/Montserrat-Bold.eot');
-        src: url('/static/assets/fonts/Montserrat-Bold.woff') format('woff');
+        font-family: 'xxxx';
+        src: url('/static/assets/fonts/xxxxx.eot');
+        src: url('/static/assets/fonts/xxxxx.woff') format('woff');
         font-weight: bold;
         font-style: normal;
       }
     `}} /> */}
   </Head>
+}
+
+CustomHead.propTypes = {
+  title: PropTypes.string.isRequired
 }
 
 export default CustomHead

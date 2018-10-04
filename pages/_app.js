@@ -9,11 +9,14 @@ import mode from '../lib/storeMode'
 // import globalStyles from '../../styles/index.scss'
 
 // handle different store configurations dynamically:
-export const StateMgmtSwitch = ({ store, children }) => (
-  mode === 'REDUX'
-    ? <Provider store={store}>{ children }</Provider>
-    : <GlobalContextProvider>{ children }</GlobalContextProvider>
-)
+export const StateMgmtSwitch = ({ store, children }) => {
+  console.log(store, children)
+  return (
+    mode === 'REDUX'
+      ? <Provider store={store}>{ children }</Provider>
+      : <GlobalContextProvider>{ children }</GlobalContextProvider>
+  )
+}
 
 class MyApp extends App {
   static async getInitialProps ({ Component, router, ctx }) {
@@ -24,16 +27,16 @@ class MyApp extends App {
     return {pageProps}
   }
   componentDidCatch (error, errorInfo) {
-    console.log('CUSTOM ERROR HANDLING', error)
     // This is needed to render errors correctly in development / production
     super.componentDidCatch(error, errorInfo)
   }
 
   render () {
     const { Component, pageProps, reduxStore, children } = this.props
+    console.log(this.props.reduxStore)
     return (
       <Container>
-        <StateMgmtSwitch store={reduxStore} children={children}>
+        <StateMgmtSwitch className='state-mgmt' store={reduxStore} children={children}>
           <Layout>
             <PageTransition timeout={300} classNames='page-transition'>
               <Component {...pageProps} />
