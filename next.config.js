@@ -22,15 +22,8 @@ module.exports = withPlugins([
         reportFilename: '../bundles/client.html'
       }
     }
-  }]
-  // [withSass, {
-  //   cssModules: true,
-  //   postcssLoaderOptions: {
-  //     parser: true
-  //   }
-  // }],
+  }],
   [withCSS],
   [withWorkers],
-  [withNextEnv],
-  []
+  [withNextEnv]
 ])
