@@ -15,7 +15,7 @@ export const StateMgmtSwitch = ({ store, children }) => (
     : <GlobalContextProvider>{ children }</GlobalContextProvider>
 )
 
-class MyApp extends App {
+export class MyApp extends App {
   static async getInitialProps ({ Component, router, ctx }) {
     let pageProps = {}
     if (Component.getInitialProps) {

@@ -7,7 +7,7 @@ import Header from './Header'
 import Footer from './Footer'
 import mode from '../../lib/storeMode'
 
-class Layout extends Component {
+export class Layout extends Component {
   componentDidMount () {}
 
   componentDidCatch () {}

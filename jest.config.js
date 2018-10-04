@@ -7,5 +7,12 @@ module.exports = {
     '<rootDir>/__tests__/__chai_tests__/'
   ],
   testURL: 'http://localhost',
-  verbose: true
+  verbose: true,
+  collectCoverageFrom: [
+    "pages/**/*.js",
+    "components/**/*.js",
+    "!pages/_document.js",
+    "!components/Head.js",
+    "!lib/**/*.js"
+  ]
 }

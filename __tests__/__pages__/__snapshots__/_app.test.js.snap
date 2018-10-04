@@ -4,25 +4,7 @@ exports[`MyApp renders correctly 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <AppWithRedux
-    initialReduxState={
-      Object {
-        "env": Object {
-          "browser": "unknown",
-          "isFreshLoad": true,
-          "isIE": false,
-          "isMobile": false,
-          "mobileSideways": false,
-          "screenLocked": false,
-          "vpDims": Object {
-            "height": 0,
-            "width": 0,
-          },
-        },
-        "ui": Object {
-          "menuOpen": false,
-        },
-      }
-    }
+    store={undefined}
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -37,23 +19,6 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "class",
     "props": Object {
-      "initialReduxState": Object {
-        "env": Object {
-          "browser": "unknown",
-          "isFreshLoad": true,
-          "isIE": false,
-          "isMobile": false,
-          "mobileSideways": false,
-          "screenLocked": false,
-          "vpDims": Object {
-            "height": 0,
-            "width": 0,
-          },
-        },
-        "ui": Object {
-          "menuOpen": false,
-        },
-      },
       "reduxStore": Object {
         "dispatch": [Function],
         "getState": [Function],
@@ -61,6 +26,7 @@ ShallowWrapper {
         "subscribe": [Function],
         Symbol(observable): [Function],
       },
+      "store": undefined,
     },
     "ref": null,
     "rendered": null,
@@ -72,23 +38,6 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
-        "initialReduxState": Object {
-          "env": Object {
-            "browser": "unknown",
-            "isFreshLoad": true,
-            "isIE": false,
-            "isMobile": false,
-            "mobileSideways": false,
-            "screenLocked": false,
-            "vpDims": Object {
-              "height": 0,
-              "width": 0,
-            },
-          },
-          "ui": Object {
-            "menuOpen": false,
-          },
-        },
         "reduxStore": Object {
           "dispatch": [Function],
           "getState": [Function],
@@ -96,6 +45,7 @@ ShallowWrapper {
           "subscribe": [Function],
           Symbol(observable): [Function],
         },
+        "store": undefined,
       },
       "ref": null,
       "rendered": null,

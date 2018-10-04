@@ -19,21 +19,18 @@ app.prepare()
 
     server.use(compression())
 
-    server.use('/static', express.static('static'))
+    server.use('/static', express.static('static')) // for sitemap
 
-    Router.forEachPattern((page, pattern, defaultParams) => // this function comes from next-url-prettifier
-      server.get(pattern, (req, res) => {
-        // console.log('\x1b[36m%s\x1b[0m', JSON.stringify(req.params))
-        // console.log('\x1b[35m%s\x1b[0m', JSON.stringify(req.query)) // query string
-        // console.log('\x1b[32m%s\x1b[0m', JSON.stringify(pattern))
-        return app.render(req, res, `/${page}`, Object.assign({}, defaultParams, req.query, req.params))
-      })
+    Router.forEachPattern((page, pattern, defaultParams) => // from next-url-prettifier
+      server.get(pattern, (req, res) => app.render(req, res, `/${page}`,
+        Object.assign({}, defaultParams, req.query, req.params)
+      ))
     )
 
     server.get('*', (req, res) => {
       const parsedUrl = parse(req.url, true)
       const { pathname } = parsedUrl
-      if (pathname === '/service-worker.js') {
+      if (pathname === '/service-worker.js') { // for next-offline
         const filePath = join(__dirname, '.next', pathname)
         app.serveStatic(req, res, filePath)
       } else {
@@ -48,7 +45,7 @@ app.prepare()
   })
 
 
-  
+
 
 // other way:
 
