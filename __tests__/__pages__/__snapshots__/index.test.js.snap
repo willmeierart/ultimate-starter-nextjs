@@ -2,6 +2,7 @@
 
 exports[`Home renders correctly 1`] = `
 ShallowWrapper {
+  "error": true,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <HomePage />,
   Symbol(enzyme.__renderer__): Object {

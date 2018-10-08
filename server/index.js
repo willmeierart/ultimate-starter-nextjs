@@ -3,7 +3,7 @@ const { parse } = require('url')
 const express = require('express')
 const next = require('next')
 const compression = require('compression')
-const Router = require('./routes').Router
+const Router = require('./router/routes').Router
 const sitemap = require('./sitemap.js')
 
 const dev = process.env.NODE_ENV !== 'production'

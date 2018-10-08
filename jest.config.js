@@ -13,6 +13,9 @@ module.exports = {
     "components/**/*.js",
     "!pages/_document.js",
     "!components/Head.js",
+    "!components/___boilerplate/**/*.js",
+    "!components/__assets/**/*.js",
+    "!components/__hoc/**/*.js",
     "!lib/**/*.js"
   ]
 }
