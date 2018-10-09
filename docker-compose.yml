@@ -7,7 +7,7 @@ services: # container. same as docker run
     environment: # optional, same as -e in docker run
       NODE_ENV: production
     ports:
-      - 80:3000
+      - 90:3000
     # volumes: # optional, same as -v in docker run
     build: .
       # context: ./_deployment/client
@@ -25,7 +25,7 @@ services: # container. same as docker run
       dockerfile: nginx.Dockerfile
     container_name: proxy
     ports:
-      - 80:80
+      - 80:90
       - 443:443
     volumes:
       - ./_deployment/proxy/nginx.conf:/etc/nginx/conf.d/default.conf
