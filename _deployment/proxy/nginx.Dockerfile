@@ -24,4 +24,4 @@ RUN echo "daemon off;" >> /etc/nginx/conf.d/nginx.conf
 EXPOSE 443
 
 # Define default command
-CMD ["service", "nginx", "start"]
+CMD ["systemctl", "start", "nginx"]
