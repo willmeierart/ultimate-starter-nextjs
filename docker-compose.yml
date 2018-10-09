@@ -21,7 +21,7 @@ services: # container. same as docker run
   http-proxy:
     image: nginx
     build: 
-      context: ./_deployment/_proxy
+      context: ./_deployment/proxy
       dockerfile: nginx.Dockerfile
     container_name: proxy
     ports:
