@@ -9,9 +9,9 @@ services: # container. same as docker run
     ports:
       - 80:3000
     # volumes: # optional, same as -v in docker run
-    build:
-      context: ./_deployment/client
-      dockerfile: client.Dockerfile
+    build: .
+      # context: ./_deployment/client
+      # dockerfile: client.Dockerfile
     working_dir: /$HOME/$PROJECT_NAME
     restart: always
   # server:
