@@ -14,11 +14,10 @@ services: # container. same as docker run
       image: client
     working_dir: /$HOME/$PROJECT_NAME
     restart: always
-    build: .
-  server:
-      image: node:alpine # optional if you use build
-    # command: # optional, replace default CMD specified by img
-    container_name: server
+  # server:
+  #     image: node:alpine # optional if you use build
+  #   # command: # optional, replace default CMD specified by img
+  #   container_name: server
   http-proxy:
     image: nginx
     build: 
@@ -36,5 +35,5 @@ services: # container. same as docker run
       -nodejs
     # environment:
     #   - DOMAIN_NAME=$PROJECT_NAME.com
-volumes: #optional
-networks: #optional
+# volumes: #optional
+# networks: #optional
