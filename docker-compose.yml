@@ -6,7 +6,8 @@ services: # container. same as docker run
     container_name: client
     environment: # optional, same as -e in docker run
       NODE_ENV: production
-    ports: 80:3000
+    ports:
+      - 80:3000
     # volumes: # optional, same as -v in docker run
     build:
       context: ./_deployment/_client
