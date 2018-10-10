@@ -1,12 +1,12 @@
 /* eslint-env jest */
 import React from 'react'
 import { shallow } from 'enzyme'
-import Home from '../../pages/index'
+import HomePage from '../../pages/index'
 
-describe('Home', () => {
-  const home = shallow(<Home />)
+describe('HomePage', () => {
+  const homePage = shallow(<HomePage />)
   it('renders correctly', () => {
-    expect(home).toMatchSnapshot()
+    expect(homePage).toMatchSnapshot()
   })
   // describe('when there is an error, `componentDidCatch` fires', () => {
   //   console.log(home.error)

@@ -1,8 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Home renders correctly 1`] = `
+exports[`HomePage renders correctly 1`] = `
 ShallowWrapper {
-  "error": true,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <HomePage />,
   Symbol(enzyme.__renderer__): Object {
