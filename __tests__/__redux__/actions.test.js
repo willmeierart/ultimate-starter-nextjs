@@ -3,18 +3,26 @@ jest.unmock('redux-thunk')
 
 import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
-import { isFreshLoad, checkIfMobile, checkIfIE, checkBrowser, getVPDims } from '../../lib/redux/actions'
-import { IS_FRESH_LOAD, CHECK_IF_MOBILE, CHECK_IF_IE, CHECK_BROWSER, GET_VP_DIMS } from '../../lib/redux/actions/types'
+import { isFreshLoad, checkIfMobile, checkIfIE, checkBrowser, getVPDims, toggleMenu } from '../../lib/redux/actions'
+import { IS_FRESH_LOAD, CHECK_IF_MOBILE, CHECK_IF_IE, CHECK_BROWSER, GET_VP_DIMS, TOGGLE_MENU } from '../../lib/redux/actions/types'
 
 const mockStore = configureMockStore([thunk])
 
-const initialState = {
-  isFreshLoad: true,
-  isMobile: false
-}
 let store
 
 describe('environment actions', () => {
+  const initialState = {
+    isMobile: false,
+    mobileSideways: false,
+    isIE: false,
+    browser: 'unknown',
+    vpDims: {
+      width: 0,
+      height: 0
+    },
+    screenLocked: false,
+    isFreshLoad: true
+  }
   beforeEach(() => {
     store = mockStore(initialState)
   })
@@ -54,6 +62,21 @@ describe('environment actions', () => {
     }
     const expectedActions = [{ type: GET_VP_DIMS, payload }]
     return store.dispatch(getVPDims()).then(() => {
+      expect(store.getActions()).toEqual(expectedActions)
+    })
+  })
+})
+
+describe('UI actions', () => {
+  const initialState = {
+    menuOpen: false
+  }
+  beforeEach(() => {
+    store = mockStore(initialState)
+  })
+  it('creates an action to toggle the menu', () => {
+    const expectedActions = [{ type: TOGGLE_MENU, payload: false }]
+    return store.dispatch(toggleMenu(false)).then(() => {
       expect(store.getActions()).toEqual(expectedActions)
     })
   })

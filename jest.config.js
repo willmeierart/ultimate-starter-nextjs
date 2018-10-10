@@ -16,6 +16,7 @@ module.exports = {
     "!components/___boilerplate/**/*.js",
     "!components/__assets/**/*.js",
     "!components/__hoc/**/*.js",
-    "!lib/**/*.js"
+    "lib/redux/reducers/*.js",
+    "lib/redux/actions/*.js"
   ]
 }
