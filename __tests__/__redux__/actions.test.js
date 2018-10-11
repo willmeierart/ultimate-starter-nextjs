@@ -7,7 +7,6 @@ import { isFreshLoad, checkIfMobile, checkIfIE, checkBrowser, getVPDims, toggleM
 import { IS_FRESH_LOAD, CHECK_IF_MOBILE, CHECK_IF_IE, CHECK_BROWSER, GET_VP_DIMS, TOGGLE_MENU } from '../../lib/redux/actions/types'
 
 const mockStore = configureMockStore([thunk])
-
 let store
 
 describe('environment actions', () => {
@@ -71,9 +70,11 @@ describe('UI actions', () => {
   const initialState = {
     menuOpen: false
   }
+
   beforeEach(() => {
     store = mockStore(initialState)
   })
+
   it('creates an action to toggle the menu', () => {
     const expectedActions = [{ type: TOGGLE_MENU, payload: false }]
     return store.dispatch(toggleMenu(false)).then(() => {

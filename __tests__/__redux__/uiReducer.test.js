@@ -1,7 +1,7 @@
 import uiReducer from '../../lib/redux/reducers/uiReducer'
 import { TOGGLE_MENU } from '../../lib/redux/actions/types'
 
-describe('Environment Reducer', () => {
+describe('UI Reducer', () => {
   const initialState = {
     menuOpen: false
   }

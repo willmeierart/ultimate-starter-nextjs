@@ -5,7 +5,7 @@ import React, { Component } from 'react'
 import Head from '../components/Head'
 import { AzLogo01 } from '../components/__assets/ZeroLogos'
 // import ExampleWorker from '../lib/workers/example.worker'
-// import fetch from 'isomorphic-fetch'
+// import fetch from 'isomorphic-unfetch'
 
 // include boilerplate for many possible features:
 
