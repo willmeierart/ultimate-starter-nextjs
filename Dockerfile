@@ -10,7 +10,8 @@ FROM ubuntu:18.04
 
 # ENV DEBIAN_FRONTEND noninteractive
 
-ENV PROJECT_NAME client
+ENV PROJECT_NAME <PROJECT_NAME>
+# ENV PROJECT_NAME client
 # Or a specific project name other than 'client'
 
 RUN apt-get update \
@@ -37,7 +38,7 @@ RUN ln -sf /dev/stdout /var/log/nginx/access.log \
 WORKDIR /${HOME}/${PROJECT_NAME}
 COPY . .
 
-RUN npm uninstall cypress && npm install
+RUN npm uninstall cypress && npm install && npm run build
 # RUN npm install && npm cache clean --force << cache clean causes D.O. memory issues
 
 # COPY ./_scripts/docker-entrypoint.sh /
@@ -54,8 +55,14 @@ EXPOSE 80 443 3000
 
 
 # RUN pm2 start npm --no-automation --name ${PROJECT_NAME} -- run start
-RUN pm2 start pm2.config.js
+# RUN pm2 start pm2.config.js
 
-CMD pm2 startup && pm2 save
+# CMD pm2-runtime start npm --no-automation --name ${PROJECT_NAME} -- run start
+# CMD pm2-runtime start pm2.config.js
+# CMD ["pm2-runtime", "start", "npm", "--no-automation", "--name", "${PROJECT_NAME}", "-- run start"]
+# CMD pm2 startup && pm2 save
+# CMD pm2 startup && pm2 save
+
+CMD ["pm2-runtime", "start", "pm2.config.js"]
 
 # >>> things that change the most toward the bottom of file

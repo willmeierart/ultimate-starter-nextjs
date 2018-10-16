@@ -5,3 +5,11 @@
 *docker-compose*
 node_modules
 package-lock.json
+__tests__
+_deployment
+_scripts
+.next
+bundles
+coverage
+jest.*
+Jenkinsfile

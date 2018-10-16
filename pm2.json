@@ -1,0 +1,14 @@
+{
+  "apps" : [{
+    "name": "client",
+    "script": "npm --no-automation -- run start",
+    "autorestart": true,
+    "watch": false,
+    "env": {
+      "NODE_ENV": "development"
+    },
+    "env_production": {
+      "NODE_ENV": "production"
+    }
+  }]
+}

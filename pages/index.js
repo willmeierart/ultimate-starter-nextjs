@@ -46,6 +46,7 @@ class HomePage extends Component {
       <main>
         <Head title='Home' />
         <section>
+          <div>check out the README...</div>
           {/* {allThings1.loading || allThings2.loading ? (
             <div className='loader-wrapper'>
               <Loader type='line-spin-fade-loader' active />

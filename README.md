@@ -17,6 +17,11 @@ Other features include:
 - testing suites in both Jest and Chai (in progress)
 - docker integration for quick deployment (in progress)
 
+### NOTE
+
+- first thing's first: search-and-replace-all ```<PROJECT_NAME>``` with 🥁🥁🥁🥁 ...the project name
+- same with ```<PROJECT_SITE>``` - (```<PROJECT_NAME>``` + tld)
+
 
 *composed by Will Meier at Agency Zero*
 
