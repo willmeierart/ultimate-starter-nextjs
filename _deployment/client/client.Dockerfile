@@ -4,10 +4,6 @@ FROM keymetrics/pm2:latest-alpine
 
 ENV PROJECT_NAME <PROJECT_NAME>
 
-RUN git config --global user.email "willmeierart@gmail.com" \
-  && git config --global user.name "willmeierart" \
-  && mkdir -p ${HOME}/${PROJECT_NAME}
-
 # WORKDIR /${HOME}/${PROJECT_NAME}
 COPY . .
 
