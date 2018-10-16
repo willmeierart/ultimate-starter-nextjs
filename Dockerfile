@@ -37,7 +37,7 @@ RUN ln -sf /dev/stdout /var/log/nginx/access.log \
 WORKDIR /${HOME}/${PROJECT_NAME}
 COPY . .
 
-RUN npm install
+RUN npm uninstall cypress && npm install
 # RUN npm install && npm cache clean --force << cache clean causes D.O. memory issues
 
 # COPY ./_scripts/docker-entrypoint.sh /
@@ -53,6 +53,8 @@ EXPOSE 80 443 3000
 # still need to use -p to open/forward on host
 
 
-CMD ["pm2", "start," "npm --no-automation --name ${PROJECT_NAME} -- run start"]
+RUN pm2 start npm --no-automation --name ${PROJECT_NAME} -- run start
+
+CMD pm2 startup && pm2 save
 
 # >>> things that change the most toward the bottom of file
