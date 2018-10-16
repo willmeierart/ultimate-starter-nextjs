@@ -6,7 +6,7 @@ FROM ubuntu:18.04
 # FROM nginx:latest
 # (tbd)
 
-# RUN rm /bin/sh && ln -s /bin/bash /bin/sh
+RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
 # ENV DEBIAN_FRONTEND noninteractive
 
@@ -21,8 +21,6 @@ RUN apt-get update \
   build-essential \
   nodejs \
   npm \
-  && apt-get update \
-  && npm i -g npm@latest \
   && npm i -g pm2@latest
 
 RUN git config --global user.email "willmeierart@gmail.com" \
@@ -37,8 +35,7 @@ RUN ln -sf /dev/stdout /var/log/nginx/access.log \
 WORKDIR /${HOME}/${PROJECT_NAME}
 COPY . .
 
-RUN npm uninstall cypress && npm install
-# RUN npm install && npm cache clean --force << cache clean causes D.O. memory issues
+RUN npm install && npm cache clean --force
 
 # COPY ./_scripts/docker-entrypoint.sh /
 # ENTRYPOINT ["/_deploy/docker-entrypoint.sh"]
@@ -53,9 +50,6 @@ EXPOSE 80 443 3000
 # still need to use -p to open/forward on host
 
 
-# RUN pm2 start npm --no-automation --name ${PROJECT_NAME} -- run start
-RUN pm2 start pm2.config.js
-
-CMD pm2 startup && pm2 save
+CMD ["pm2", "start npm --no-automation --name ${PROJECT_NAME} -- run start"]
 
 # >>> things that change the most toward the bottom of file
