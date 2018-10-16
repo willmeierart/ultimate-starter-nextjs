@@ -3,7 +3,7 @@
 if [ $1 ]
   then
     echo "building docker image as $1"
-    export PROJECT_NAME=$1
+    # export PROJECT_NAME=$1xx
     # /bin/sh ./_scripts/pre/installDocker.sh
     docker image build -t $1 . \
     && docker container run -it --name app -p 80:3000 $1 bash
