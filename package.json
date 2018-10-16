@@ -1,5 +1,5 @@
 {
-  "name": "<PROJECT_NAME>",
+  "name": "zero-starter-nextjs",
   "version": "1.0.0",
   "description": "using next.js and apollo",
   "scripts": {

@@ -19,7 +19,8 @@ Other features include:
 
 ### NOTE
 
-- first thing's first: search-and-replace-all ```<PROJECT_NAME>``` with 🥁🥁🥁🥁 ...the project name
+- first thing's first: search-and-replace-all ```<PROJECT_NAME>``` with 🥁🥁🥁🥁 ...the project name (use script)
+  - and change first param in package.json to same thing
 - same with ```<PROJECT_SITE>``` - (```<PROJECT_NAME>``` + tld)
 
 
