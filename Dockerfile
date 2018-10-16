@@ -21,6 +21,8 @@ RUN apt-get update \
   build-essential \
   nodejs \
   npm \
+  && apt-get update \
+  && npm i -g npm@latest \
   && npm i -g pm2@latest
 
 RUN git config --global user.email "willmeierart@gmail.com" \

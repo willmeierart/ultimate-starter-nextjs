@@ -4,7 +4,7 @@ const withPlugins = require('next-compose-plugins')
 const withBundleAnalyzer = require('@zeit/next-bundle-analyzer')
 const withWorkers = require('@zeit/next-workers')
 const nextEnv = require('next-env')
-const withOptimizedImages = require('next-optimized-images')
+// const withOptimizedImages = require('next-optimized-images')
 const withOffline = require('next-offline')
 const dotenvLoad = require('dotenv-load')
 dotenvLoad()
@@ -27,7 +27,7 @@ module.exports = withPlugins([
   }],
   [withWorkers],
   [withNextEnv],
-  [withOptimizedImages],
+  // [withOptimizedImages],
   [withOffline]
   // [withSass, {
   //   cssModules: true,
