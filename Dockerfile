@@ -53,6 +53,6 @@ EXPOSE 80 443 3000
 # still need to use -p to open/forward on host
 
 
-CMD ["pm2", "start npm --no-automation --name ${PROJECT_NAME} -- run start"]
+CMD ["pm2", "start," "npm --no-automation --name ${PROJECT_NAME} -- run start"]
 
 # >>> things that change the most toward the bottom of file

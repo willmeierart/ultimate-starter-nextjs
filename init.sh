@@ -13,6 +13,6 @@ else
   echo "building docker image as $IMAGE_NAME"
   export PROJECT_NAME=$IMAGE_NAME
   /bin/sh ./_scripts/pre/installDocker.sh
-  docker image build -t agencyzero/$IMAGE_NAME . \
+  docker image build -t $IMAGE_NAME . \
   && docker container run -it --name app -p 80:3000 $IMAGE_NAME
 fi
