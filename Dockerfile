@@ -6,7 +6,7 @@ FROM ubuntu:18.04
 # FROM nginx:latest
 # (tbd)
 
-RUN rm /bin/sh && ln -s /bin/bash /bin/sh
+# RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
 # ENV DEBIAN_FRONTEND noninteractive
 
@@ -35,7 +35,8 @@ RUN ln -sf /dev/stdout /var/log/nginx/access.log \
 WORKDIR /${HOME}/${PROJECT_NAME}
 COPY . .
 
-RUN npm install && npm cache clean --force
+RUN npm install
+# RUN npm install && npm cache clean --force << cache clean causes D.O. memory issues
 
 # COPY ./_scripts/docker-entrypoint.sh /
 # ENTRYPOINT ["/_deploy/docker-entrypoint.sh"]
