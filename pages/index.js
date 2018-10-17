@@ -46,7 +46,7 @@ class HomePage extends Component {
       <main>
         <Head title='Home' />
         <section>
-          <div>check out the README...</div>
+          <h1 style={{ textAlign: 'center' }}>check out the README...</h1>
           {/* {allThings1.loading || allThings2.loading ? (
             <div className='loader-wrapper'>
               <Loader type='line-spin-fade-loader' active />

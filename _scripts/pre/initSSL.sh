@@ -4,7 +4,6 @@ if [ $1 ]
   then
     echo "building docker image as $1"
     export PROJECT_NAME=$1
-    /bin/sh ./_scripts/pre/installDocker.sh
     /bin/sh ./_scripts/pre/letsencrypt/staging.sh \
       && /bin/sh ./_scripts/pre/letsencrypt/production.sh \
       && /bin/sh ./_scripts/pre/letsencrypt/cron.sh \
@@ -22,7 +21,6 @@ else
   # docker image build -t agencyzero/$IMAGE_NAME . \
   #   && docker container run -it --name app -p 80:3000 $IMAGE_NAME
   echo "building docker image as <PROJECT_NAME>"
-  /bin/sh ./_scripts/pre/installDocker.sh
   /bin/sh ./_scripts/pre/letsencrypt/staging.sh \
       && /bin/sh ./_scripts/pre/letsencrypt/production.sh \
       && /bin/sh ./_scripts/pre/letsencrypt/cron.sh \

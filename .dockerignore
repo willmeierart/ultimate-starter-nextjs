@@ -6,7 +6,7 @@
 node_modules
 package-lock.json
 __tests__
-_deployment
+_deploy
 _scripts
 .next
 bundles

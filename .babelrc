@@ -12,12 +12,6 @@
             },
             "cwd": "babelrc"
           }
-        ],
-        [
-          "wrap-in-js",
-          {
-            "extensions": ["css$", "scss$"]
-          }
         ]
       ],
       "presets": ["next/babel"]
@@ -33,12 +27,6 @@
               "styles": "./styles"
             },
             "cwd": "babelrc"
-          }
-        ],
-        [
-          "wrap-in-js",
-          {
-            "extensions": ["css$", "scss$"]
           }
         ]
       ],

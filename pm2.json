@@ -3,12 +3,13 @@
     "name": "client",
     "script": "npm --no-automation -- run start",
     "autorestart": true,
+    "max_restarts": 25,
+    "instances": 4,
+    "merge_logs": true,
     "watch": false,
     "env": {
-      "NODE_ENV": "development"
-    },
-    "env_production": {
-      "NODE_ENV": "production"
+      "NODE_ENV": "production",
+      "PORT": 3000
     }
   }]
 }
