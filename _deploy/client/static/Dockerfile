@@ -1,0 +1,17 @@
+# build phase
+FROM node:alpine as builder
+
+WORKDIR /<PROJECT_NAME>
+
+# first just check if modules have changed,
+# so you don't `npm i` every time you update files
+COPY ./package.json .
+RUN npm uninstall cypress && npm install
+
+COPY . .
+RUN npm run export
+
+# proxy phase -- send static output to default nginx server
+FROM nginx 
+
+COPY --from=builder /<PROJECT_NAME>/out /usr/share/nginx/html
