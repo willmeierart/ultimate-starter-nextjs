@@ -6,4 +6,17 @@ before_install:
   - docker build -t agencyzero/<PROJECT_NAME> -f ./_deploy/client/dev.Dockerfile .
 
 script:
-  - docker run agencyzero/<PROJECT_NAME> npm run test:coverage
+  - docker run agencyzero/<PROJECT_NAME> npm run test -- -u
+
+deploy:
+  # provider: elasticbeanstalk
+  # region:  "us-east-2"
+  # app: "docker-test-proj"
+  # env: "DockerTestProj-env"
+  # bucket_name: "elasticbeanstalk-us-east-2-061665468774"
+  # bucket_path: "docker-test-proj"
+  # on:
+  #   branch: master
+  # access_key_id: $AWS_ACCESS_KEY # these added thru travis ui
+  # secret_access_key:
+  #   secure: "$AWS_SECRET_KEY" 

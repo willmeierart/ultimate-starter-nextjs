@@ -12,8 +12,8 @@ services:
       - ./production.conf:/etc/nginx/conf.d/<PROJECT_NAME>.conf
       - ./production-site:/<PROJECT_NAME>
       - ./dh-param/dhparam-2048.pem:/etc/ssl/certs/dhparam-2048.pem
-      - /docker-volumes/etc/letsencrypt/live/<PROJECT_SITE>/fullchain.pem:/etc/letsencrypt/live/<PROJECT_SITE>/fullchain.pem
-      - /docker-volumes/etc/letsencrypt/live/<PROJECT_SITE>/privkey.pem:/etc/letsencrypt/live/<PROJECT_SITE>/privkey.pem
+      - /docker-volumes/etc/letsencrypt/live/<PROJECT_NAME>.com/fullchain.pem:/etc/letsencrypt/live/<PROJECT_NAME>.com/fullchain.pem
+      - /docker-volumes/etc/letsencrypt/live/<PROJECT_NAME>.com/privkey.pem:/etc/letsencrypt/live/<PROJECT_NAME>.com/privkey.pem
     networks:
       - docker-network
 

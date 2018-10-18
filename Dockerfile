@@ -1,3 +1,5 @@
+# EXPORT [[static]] version (because one needs to be in root dir)
+
 # build phase
 FROM node:alpine as builder
 
@@ -13,5 +15,7 @@ RUN npm run export
 
 # proxy phase -- send static output to default nginx server
 FROM nginx 
+
+EXPOSE 80
 
 COPY --from=builder /<PROJECT_NAME>/out /usr/share/nginx/html

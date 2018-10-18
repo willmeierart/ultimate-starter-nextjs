@@ -8,7 +8,7 @@ sudo rm -rf /docker-volumes/ \
     certonly --webroot \
     --email zero@agencyzero.com --agree-tos --no-eff-email \
     --webroot-path=/data/letsencrypt \
-    -d <PROJECT_SITE> -d www.<PROJECT_SITE> -d api.<PROJECT_SITE> \
+    -d <PROJECT_NAME>.com -d www.<PROJECT_NAME>.com -d api.<PROJECT_NAME>.com \
     \
     && cd /docker/letsencrypt-docker-nginx/src/letsencrypt \
       && sudo docker-compose down

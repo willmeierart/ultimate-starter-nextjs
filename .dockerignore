@@ -1,15 +1,9 @@
 .git
-.eslintrc.js
 .results
 *Dockerfile*
 *docker-compose*
 node_modules
 package-lock.json
-__tests__
-_deploy
-_scripts
-.next
 bundles
 coverage
-jest.*
 Jenkinsfile

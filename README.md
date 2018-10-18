@@ -21,7 +21,7 @@ Other features include:
 
 - first thing's first: search-and-replace-all ```<PROJECT_NAME>``` with 🥁🥁🥁🥁 ...the project name (use script)
   - and change first param in package.json to same thing
-- same with ```<PROJECT_SITE>``` - (```<PROJECT_NAME>``` + tld)
+- same with ```<PROJECT_NAME>.com``` - (```<PROJECT_NAME>``` + tld)
 
 
 *composed by Will Meier at Agency Zero*
