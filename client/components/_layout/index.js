@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { checkIfMobile, getVPDims } from '../../lib/redux/actions'
 import Header from './Header'
 import Footer from './Footer'
-import mode from '../../lib/storeMode'
+import storeMode from '../../lib/globals'
 
 export class Layout extends Component {
   componentDidMount () {}
@@ -44,7 +44,7 @@ function mapDispatchToProps (dispatch) {
   }
 }
 
-export default mode === 'REDUX' ? connect(mapStateToProps, mapDispatchToProps)(Layout) : Layout
+export default storeMode === 'REDUX' ? connect(mapStateToProps, mapDispatchToProps)(Layout) : Layout
 
 const reduxPropTypes = {
   isMobile: PropTypes.bool.isRequired,
@@ -55,7 +55,7 @@ const reduxPropTypes = {
 
 const contextPropTypes = {}
 
-const initialStoreProps = mode === 'REDUX' ? reduxPropTypes : contextPropTypes
+const initialStoreProps = storeMode === 'REDUX' ? reduxPropTypes : contextPropTypes
 
 Layout.propTypes = {
   ...initialStoreProps

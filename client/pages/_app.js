@@ -5,12 +5,12 @@ import { Provider } from 'react-redux'
 import withReduxStore from '../lib/redux/withReduxStore'
 import Layout from '../components/_layout'
 import GlobalContextProvider from '../components/__contextProviders/GlobalContextProvider'
-import mode from '../lib/storeMode'
+import storeMode from '../lib/globals'
 // import globalStyles from '../../styles/index.scss'
 
 // handle different store configurations dynamically:
 export const StateMgmtSwitch = ({ store, children }) => (
-  mode === 'REDUX'
+  storeMode === 'REDUX'
     ? <Provider store={store}>{ children }</Provider>
     : <GlobalContextProvider>{ children }</GlobalContextProvider>
 )
@@ -73,4 +73,4 @@ export class MyApp extends App {
   }
 }
 
-export default mode === 'REDUX' ? withReduxStore(MyApp) : MyApp
+export default storeMode === 'REDUX' ? withReduxStore(MyApp) : MyApp
