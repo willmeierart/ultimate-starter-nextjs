@@ -46,10 +46,10 @@ release:
     - "docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY"
   script:
     - "docker build -t ${CI_REGISTRY}/${CI_PROJECT_PATH}-client:latest --pull ."
-    - "docker build -t ${CI_REGISTRY}/${CI_PROJECT_PATH}-nginx:latest --pull ./_nginx"
+    # - "docker build -t ${CI_REGISTRY}/${CI_PROJECT_PATH}-nginx:latest --pull ./_nginx"
     # - "docker build -t ${CI_REGISTRY}/${CI_PROJECT_PATH}-api:latest --pull ./_api"
     - "docker push ${CI_REGISTRY}/${CI_PROJECT_PATH}-client:latest"
-    - "docker push ${CI_REGISTRY}/${CI_PROJECT_PATH}-nginx:latest"
+    # - "docker push ${CI_REGISTRY}/${CI_PROJECT_PATH}-nginx:latest"
     # - "docker push ${CI_REGISTRY}/${CI_PROJECT_PATH}-api:latest"
   # after_script:
   #   - "docker logout $CI_REGISTRY"
