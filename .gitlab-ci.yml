@@ -6,7 +6,7 @@ stages:
   - build
   - test
   - release
-  # - deploy
+  - deploy
 build:
   stage: build
   image: node:alpine
