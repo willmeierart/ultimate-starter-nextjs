@@ -47,7 +47,7 @@ release:
     script:
       - "docker build -t ${CI_REGISTRY}/${CI_PROJECT_PATH}-client:latest --pull ./client"
       - "docker build -t ${CI_REGISTRY}/${CI_PROJECT_PATH}-nginx:latest --pull ./nginx"
-      # - "docker build -t ${CI_REGISTRY}/${CI_PROJECT_PATH}-api:latest --pull ./api"
+
       - "docker push ${CI_REGISTRY}/${CI_PROJECT_PATH}-client:latest"
       - "docker push ${CI_REGISTRY}/${CI_PROJECT_PATH}-nginx:latest"
       # - "docker push ${CI_REGISTRY}/${CI_PROJECT_PATH}-api:latest"
