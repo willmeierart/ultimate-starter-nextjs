@@ -11,8 +11,8 @@ COPY . .
 RUN npm run build
 # RUN npm run start
 
-# proxy phase -- this might not work with SSR...
-FROM nginx
-EXPOSE 3000
-COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
-COPY --from=builder /client/.next /usr/share/nginx/html
+# # proxy phase -- this might not work with SSR...
+# FROM nginx
+# EXPOSE 3000
+# COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
+# COPY --from=builder /client/.next /usr/share/nginx/html
