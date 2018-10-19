@@ -3,8 +3,7 @@ module.exports = {
   testPathIgnorePatterns: [
     '<rootDir>/.next/',
     '<rootDir>/node_modules/',
-    '<rootDir>/__tests__/__utils__/',
-    '<rootDir>/__tests__/__chai_tests__/'
+    '<rootDir>/__tests__/utils/',
   ],
   testURL: 'http://localhost',
   verbose: true,
