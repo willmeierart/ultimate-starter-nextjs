@@ -1,7 +1,5 @@
 # Agency Zero FrontEnd Starter
 
-## a constant work in progress, updated with every project...
-
 ## Features include:
 
 - latest version of [Next.js](https://github.com/zeit/next.js) for fast page loads and best SEO possible
@@ -21,3 +19,4 @@
 *composed with 🖤 by Will Meier at Agency Zero ~2018*
 
 
+## a constant work in progress, updated with every project...
