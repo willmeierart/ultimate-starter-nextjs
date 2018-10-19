@@ -35,6 +35,7 @@ release:
   image: docker:latest
   only:
     - "master"
+    - "production"
   services:
     - docker:dind
   variables:
