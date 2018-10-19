@@ -46,10 +46,10 @@ release:
     - "docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY"
   script:
     - "docker build -t ${CI_REGISTRY}/${CI_PROJECT_PATH}/client:latest --pull ."
-    # - "docker build -t ${CI_REGISTRY}/${CI_PROJECT_PATH}/nginx:latest --pull ./_nginx"
+    - "docker build -t ${CI_REGISTRY}/${CI_PROJECT_PATH}/nginx:latest --pull ./_nginx"
     # - "docker build -t ${CI_REGISTRY}/${CI_PROJECT_PATH}/api:latest --pull ./_api"
     - "docker push ${CI_REGISTRY}/${CI_PROJECT_PATH}/client:latest"
-    # - "docker push ${CI_REGISTRY}/${CI_PROJECT_PATH}/nginx:latest"
+    - "docker push ${CI_REGISTRY}/${CI_PROJECT_PATH}/nginx:latest"
     # - "docker push ${CI_REGISTRY}/${CI_PROJECT_PATH}/api:latest"
   after_script:
     - "docker logout $CI_REGISTRY"
@@ -69,5 +69,9 @@ deploy:
     - ssh-add ~/.ssh/id_rsa
     - ssh-keyscan -H $DEPLOY_SERVER_IP >> ~/.ssh/known_hosts
   script:
-    - scp -r ./environment.env ./docker-compose.prod.yml root@${DEPLOY_SERVER_IP}:~/
-    - ssh root@$DEPLOY_SERVER_IP "docker login -u ${CI_REGISTRY_USER} -p ${CI_REGISTRY_PASSWORD} ${CI_REGISTRY}; docker-compose -f docker-compose.prod.yml stop; docker-compose -f docker-compose.prod.yml rm client --force; docker pull ${CI_REGISTRY}/${CI_PROJECT_PATH}:latest; docker-compose -f docker-compose.prod.yml up -d"
+    - scp -r .env ./docker-compose.prod.yml root@${DEPLOY_SERVER_IP}:~/
+    - ssh root@$DEPLOY_SERVER_IP "docker login -u ${CI_REGISTRY_USER} -p ${CI_REGISTRY_PASSWORD} ${CI_REGISTRY}
+    - docker-compose -f docker-compose.prod.yml stop
+    - docker-compose -f docker-compose.prod.yml rm client --force
+    - docker pull ${CI_REGISTRY}/${CI_PROJECT_PATH}:latest
+    - docker-compose -f docker-compose.prod.yml up -d"
