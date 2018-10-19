@@ -1,8 +1,15 @@
 **/node_modules
 **/*.log
+**/*.bak
 **/*.env
 .vscode
+.DS_Store
 notepad.*
+.next
+out
+coverage
+bundles
+cypress
 client/.next
 client/out
 client/coverage
