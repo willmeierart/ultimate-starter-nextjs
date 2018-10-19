@@ -4,16 +4,16 @@ services:
     restart: always
     build:
       dockerfile: Dockerfile.dev
-      context: ./_nginx
+      context: ./nginx
     ports:
       - '3050:80'
   client:
     build:
       dockerfile: Dockerfile.dev
-      context: .
+      context: ./client
     volumes:
-      - /node_modules
-      - .:/client
+      - /client/node_modules
+      - ./client:/client
   # api:
   #   build:
   #     dockerfile: Dockerfile.dev
