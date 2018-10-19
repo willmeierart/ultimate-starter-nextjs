@@ -1,13 +1,13 @@
 version: '3'
 services:
-  nginx:
-    restart: always
-    image: registry.gitlab.com
-    build:
-      dockerfile: Dockerfile.dev
-      context: ./_nginx
-    ports:
-      - '80:80'
+  # nginx:
+  #   restart: always
+  #   image: registry.gitlab.com
+  #   build:
+  #     dockerfile: Dockerfile.dev
+  #     context: ./_nginx
+  #   ports:
+  #     - '80:80'
   client:
     build:
       dockerfile: Dockerfile.dev
