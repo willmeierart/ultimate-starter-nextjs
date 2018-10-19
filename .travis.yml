@@ -3,10 +3,10 @@ services:
   - docker
 
 before_install:
-  - docker build -t agencyzero/<PROJECT_NAME> -f ./_deploy/client/dev.Dockerfile .
+  - docker build -t agencyzero/xxx_project_name_xxx -f ./_deploy/client/dev.Dockerfile .
 
 script:
-  - docker run agencyzero/<PROJECT_NAME> npm run test -- -u
+  - docker run agencyzero/xxx_project_name_xxx npm run test -- -u
 
 deploy:
   # provider: elasticbeanstalk

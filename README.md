@@ -19,9 +19,9 @@ Other features include:
 
 ### NOTE
 
-- first thing's first: search-and-replace-all ```<PROJECT_NAME>``` with 🥁🥁🥁🥁 ...the project name (use script)
+- first thing's first: search-and-replace-all ```xxx_project_name_xxx``` with 🥁🥁🥁🥁 ...the project name (use script)
   - and change first param in package.json to same thing
-- same with ```<PROJECT_NAME>.com``` - (```<PROJECT_NAME>``` + tld)
+- same with ```xxx_project_name_xxx.com``` - (```xxx_project_name_xxx``` + tld)
 
 
 *composed by Will Meier at Agency Zero*

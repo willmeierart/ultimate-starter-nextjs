@@ -1,9 +1,9 @@
 .git
 .results
-*Dockerfile*
-*docker-compose*
-node_modules
-package-lock.json
-bundles
-coverage
 Jenkinsfile
+**/*Dockerfile*
+*docker-compose*
+**/node_modules
+**/package-lock.json
+client/bundles
+client/coverage

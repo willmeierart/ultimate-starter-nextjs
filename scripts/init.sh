@@ -13,7 +13,7 @@ else
   # export PROJECT_NAME=$IMAGE_NAME
   # docker image build -t $IMAGE_NAME . \
   # && docker container run -it --name app -p 80:3000 $IMAGE_NAME bash
-  echo "building docker image as <PROJECT_NAME>"
-  docker image build -t <PROJECT_NAME> . \
-  && docker container run -it --name app -p 80:3000 <PROJECT_NAME> bash
+  echo "building docker image as xxx_project_name_xxx"
+  docker image build -t xxx_project_name_xxx . \
+  && docker container run -it --name app -p 80:3000 xxx_project_name_xxx bash
 fi

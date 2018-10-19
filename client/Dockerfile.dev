@@ -3,7 +3,7 @@
 FROM node:alpine
 # FROM keymetrics/pm2:latest-alpine
 
-WORKDIR /<PROJECT_NAME>
+WORKDIR /client
 
 # first just check if modules have changed,
 # so you don't `npm i` every time you update files

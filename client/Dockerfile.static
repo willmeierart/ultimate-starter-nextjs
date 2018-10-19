@@ -3,7 +3,7 @@
 # build phase
 FROM node:alpine as builder
 
-WORKDIR /<PROJECT_NAME>
+WORKDIR /client
 
 # first just check if modules have changed,
 # so you don't `npm i` every time you update files
@@ -18,4 +18,4 @@ FROM nginx
 
 EXPOSE 80
 
-COPY --from=builder /<PROJECT_NAME>/out /usr/share/nginx/html
+COPY --from=builder /client/out /usr/share/nginx/html

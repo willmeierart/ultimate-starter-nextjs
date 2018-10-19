@@ -20,10 +20,10 @@ else
   #     && /bin/sh ./_scripts/pre/letsencrypt/cron.sh \
   # docker image build -t agencyzero/$IMAGE_NAME . \
   #   && docker container run -it --name app -p 80:3000 $IMAGE_NAME
-  echo "building docker image as <PROJECT_NAME>"
+  echo "building docker image as xxx_project_name_xxx"
   /bin/sh ./_scripts/pre/letsencrypt/staging.sh \
       && /bin/sh ./_scripts/pre/letsencrypt/production.sh \
       && /bin/sh ./_scripts/pre/letsencrypt/cron.sh \
-  docker image build -t agencyzero/<PROJECT_NAME> . \
-    && docker container run -it --name app -p 80:3000 <PROJECT_NAME>
+  docker image build -t agencyzero/xxx_project_name_xxx . \
+    && docker container run -it --name app -p 80:3000 xxx_project_name_xxx
 fi

@@ -1,46 +1,73 @@
 version: '3'
 services:
-  dev:
+  nginx:
+    restart: always
     build:
-      context: ./_deploy/client
-      dockerfile: dev.Dockerfile
-    environment:
-      NODE_ENV: development
+      dockerfile: Dockerfile.dev
+      context: ./nginx
     ports:
-      - '3000:3000'
-    volumes:
-        - /<PROJECT_NAME>/node_modules
-        - .:/<PROJECT_NAME>
-    restart: always # on-failure maybe used for a worker
-  static:
+      - '3050:80'
+  client:
     build:
-      context: ./_deploy/client/static
-      dockerfile: Dockerfile
-    environment:
-      NODE_ENV: production
-    restart: always
-  # prod:
-  #   dev:
+      dockerfile: Dockerfile.dev
+      context: ./client
+    volumes:
+      - /client/node_modules
+      - ./client:/client
+  # api:
   #   build:
-  #     context: ./_deploy/client
-  #     dockerfile: Dockerfile
-  #   environment:
-  #     NODE_ENV: development
-  #   ports:
-  #     - '90:3000'
+  #     dockerfile: Dockerfile.dev
+  #     context: ./api
   #   volumes:
-  #       - /<PROJECT_NAME>/node_modules
-  #       - .:/<PROJECT_NAME>
-  #   restart: always # on-failure maybe used for a worker
-  test:
-    build:
-      context: ./_deploy/client
-      dockerfile: dev.Dockerfile
-    environment:
-      NODE_ENV: test
-    volumes:
-        - /<PROJECT_NAME>/node_modules
-        - .:/<PROJECT_NAME>
-    command: ["npm", "run", "test:watch"]
-    restart: always
-  # proxy:
+  #     - /app/node_modules
+  #     - ./api:/api
+  # worker:
+
+
+
+# version: '3'
+# services:
+#   dev:
+#     build:
+#       context: ./_deploy/client
+#       dockerfile: dev.Dockerfile
+#     environment:
+#       NODE_ENV: development
+#     ports:
+#       - '3000:3000'
+#     volumes:
+#         - /client/node_modules
+#         - .:/client
+#     restart: always # on-failure maybe used for a worker
+#   static:
+#     build:
+#       context: ./_deploy/client/static
+#       dockerfile: Dockerfile
+#     environment:
+#       NODE_ENV: production
+#     restart: always
+#   # prod:
+#   #   dev:
+#   #   build:
+#   #     context: ./_deploy/client
+#   #     dockerfile: Dockerfile
+#   #   environment:
+#   #     NODE_ENV: development
+#   #   ports:
+#   #     - '90:3000'
+#   #   volumes:
+#   #       - /xxx_project_name_xxx/node_modules
+#   #       - .:/xxx_project_name_xxx
+#   #   restart: always # on-failure maybe used for a worker
+#   test:
+#     build:
+#       context: ./_deploy/client
+#       dockerfile: dev.Dockerfile
+#     environment:
+#       NODE_ENV: test
+#     volumes:
+#         - /xxx_project_name_xxx/node_modules
+#         - .:/xxx_project_name_xxx
+#     command: ["npm", "run", "test:watch"]
+#     restart: always
+#   # proxy:

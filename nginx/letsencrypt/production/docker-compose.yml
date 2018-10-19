@@ -9,11 +9,11 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - ./production.conf:/etc/nginx/conf.d/<PROJECT_NAME>.conf
-      - ./production-site:/<PROJECT_NAME>
+      - ./production.conf:/etc/nginx/conf.d/xxx_project_name_xxx.conf
+      - ./production-site:/xxx_project_name_xxx
       - ./dh-param/dhparam-2048.pem:/etc/ssl/certs/dhparam-2048.pem
-      - /docker-volumes/etc/letsencrypt/live/<PROJECT_NAME>.com/fullchain.pem:/etc/letsencrypt/live/<PROJECT_NAME>.com/fullchain.pem
-      - /docker-volumes/etc/letsencrypt/live/<PROJECT_NAME>.com/privkey.pem:/etc/letsencrypt/live/<PROJECT_NAME>.com/privkey.pem
+      - /docker-volumes/etc/letsencrypt/live/xxx_project_name_xxx.com/fullchain.pem:/etc/letsencrypt/live/xxx_project_name_xxx.com/fullchain.pem
+      - /docker-volumes/etc/letsencrypt/live/xxx_project_name_xxx.com/privkey.pem:/etc/letsencrypt/live/xxx_project_name_xxx.com/privkey.pem
     networks:
       - docker-network
 

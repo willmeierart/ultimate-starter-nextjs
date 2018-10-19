@@ -1,0 +1,65 @@
+cache:
+  key: "$CI_BUILD_REF_NAME node:8-alpine"
+  paths:
+    - node_modules/
+stages:
+  - build
+  - test
+  - release
+  - deploy
+build:
+  stage: build
+  image: node:alpine
+  variables:
+    NODE_ENV: "development"
+  before_script:
+    - apk add --update bash
+    - apk add --update git && rm -rf /tmp/* /var/cache/apk/*
+    - npm install
+  script:
+    - npm run build
+  artifacts:
+    paths:
+      - .next/
+    #  - server/
+    #  - public/
+test:
+  stage: test
+  image: node:alpine
+  variables:
+    NODE_ENV: "test"
+  script:
+    - npm run test:coverage
+release:
+  stage: release
+  image: docker:latest
+  only:
+    - "master"
+  services:
+    - docker:dind
+  variables:
+    DOCKER_DRIVER: "overlay"
+  before_script:
+      - docker version
+      - "docker info"
+      - "docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY"
+    script:
+      - "docker build -t ${CI_REGISTRY}/${CI_PROJECT_PATH}:latest --pull ."
+      - "docker push ${CI_REGISTRY}/${CI_PROJECT_PATH}:latest"
+    after_script:
+      - "docker logout ${CI_REGISTRY}"
+deploy:
+  stage: deploy
+  image: gitlab/dind:latest
+  only:
+    - "master"
+  environment: production
+  services:
+    - docker:dind
+  before_script:
+   - apt-get update -y && apt-get install sshpass
+  script:
+    - printf "DATABASE_URL=${DATABASE_URL}\nPORT=80\n" > environment.env
+    - sshpass -p "${DEPLOYMENT_SERVER_PASS}" scp -o StrictHostKeyChecking=no -o PreferredAuthentications=password -o PubkeyAuthentication=no ./environment.env ${DEPLOYMENT_SERVER_USER}@${DEPLOYMENT_SERVER_IP}:~/
+    - sshpass -p "${DEPLOYMENT_SERVER_PASS}" scp -o StrictHostKeyChecking=no -o PreferredAuthentications=password -o PubkeyAuthentication=no ./docker-compose.autodeploy.yml ${DEPLOYMENT_SERVER_USER}@${DEPLOYMENT_SERVER_IP}:~/
+    - sshpass -p $DEPLOYMENT_SERVER_PASS ssh -o StrictHostKeyChecking=no -o PreferredAuthentications=password -o PubkeyAuthentication=no $DEPLOYMENT_SERVER_USER@$DEPLOYMENT_SERVER_IP "echo ${$DEPLOYMENT_SERVER_PASS} | sudo -S ls && docker login -u ${CI_REGISTRY_USER} -p ${CI_REGISTRY_PASSWORD} ${CI_REGISTRY}; sudo docker-compose -f docker-compose.autodeploy.yml stop; sudo docker-compose -f docker-compose.autodeploy.yml rm web --force; sudo docker pull ${CI_REGISTRY}/${CI_PROJECT_PATH}:latest; sudo docker-compose -f docker-compose.autodeploy.yml up -d"
