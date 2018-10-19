@@ -1,8 +1,7 @@
-
 cache:
-  key: "$CI_BUILD_REF_NAME node:alpine"
+  key: "${CI_BUILD_REF_NAME} node:alpine"
   paths:
-    - node_modules/
+    - /client/node_modules/
 stages:
   - build
   - test
@@ -11,8 +10,8 @@ stages:
 build:
   stage: build
   image: node:alpine
-  variables:
-    NODE_ENV: "development"
+  # variables:
+  #   NODE_ENV: "development"
   before_script:
     - apk add --update bash
     - apk add --update git && rm -rf /tmp/* /var/cache/apk/*
