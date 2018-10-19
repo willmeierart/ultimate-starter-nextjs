@@ -6,7 +6,7 @@ WORKDIR /client
 # first just check if modules have changed,
 # so you don't `npm i` every time you update files
 COPY ./package.json .
-RUN npm uninstall cypress && npm install
+RUN npm install
 COPY . .
 RUN npm run build
 # RUN npm run start
