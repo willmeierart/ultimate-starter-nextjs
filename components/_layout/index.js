@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { checkIfMobile, getVPDims } from '../../lib/redux/actions'
 import Header from './Header'
 import Footer from './Footer'
-import storeMode from '../../lib/globals'
+import { storeMode } from '../../lib/globals'
 
 export class Layout extends Component {
   componentDidMount () {}

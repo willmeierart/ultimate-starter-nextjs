@@ -29,7 +29,7 @@ test:
   variables:
     NODE_ENV: "test"
   script:
-    - npm run test:coverage
+    - npm run test:coverage -- -u
 release:
   stage: release
   image: docker:latest

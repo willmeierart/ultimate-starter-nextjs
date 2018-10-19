@@ -3,7 +3,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import configureStore from 'redux-mock-store'
 import { connect } from 'react-redux'
-import storeMode from '../../../lib/storeMode'
+import { storeMode } from '../../../lib/globals'
 import Layout from '../../../components/_layout'
 
 const initialState = {

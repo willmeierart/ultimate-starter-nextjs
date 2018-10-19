@@ -2,7 +2,7 @@
 import React from 'react'
 import App from 'next/app'
 import { shallow, mount } from 'enzyme'
-import storeMode from '../../lib/storeMode'
+import { storeMode } from '../../lib/globals'
 // import store from '../../lib/redux/store'
 import configureStore from 'redux-mock-store'
 import MyApp, { StateMgmtSwitch } from '../../pages/_app'
