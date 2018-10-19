@@ -1,7 +1,7 @@
 # Set nginx base image
 FROM nginx
 
-COPY ./nginx.conf /etc/nginx/conf.d/default.conf
+COPY ./_nginx/nginx.conf /etc/nginx/conf.d/default.conf
 
 
 # VOLUME ["/etc/nginx/ssl", "/etc/nginx/psw"]
