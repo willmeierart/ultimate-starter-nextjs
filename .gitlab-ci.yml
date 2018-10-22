@@ -71,7 +71,7 @@ deploy:
   script:
     # - scp -r .env ./docker-compose.prod.yml root@${DEPLOY_SERVER_IP}:~/
     - scp -r ./docker-compose.prod.yml root@${DEPLOY_SERVER_IP}:~/
-    - ssh root@$DEPLOY_SERVER_IP "docker login -u ${CI_REGISTRY_USER} -p ${CI_REGISTRY_PASSWORD} ${CI_REGISTRY}
+    - ssh root@$DEPLOY_SERVER_IP "docker login -u ${CI_REGISTRY_USER} -p ${CI_REGISTRY_PASSWORD} ${CI_REGISTRY}"
     - docker-compose -f docker-compose.prod.yml stop; \
       docker-compose -f docker-compose.prod.yml rm client --force; \
       docker-compose -f docker-compose.prod.yml rm nginx --force; \
