@@ -68,8 +68,8 @@ deploy:
     - eval "$(ssh-agent -s)"
     - ssh-add ~/.ssh/id_rsa
     - ssh-keyscan -H $DEPLOY_SERVER_IP >> ~/.ssh/known_hosts
-    - sudo curl -L "https://github.com/docker/compose/releases/download/1.23.0/docker-compose-$(uname -s)-$(uname -m)"  -o /usr/local/bin/docker-compose
-    - sudo chmod +x /usr/local/bin/docker-compose
+    # - sudo curl -L "https://github.com/docker/compose/releases/download/1.23.0/docker-compose-$(uname -s)-$(uname -m)"  -o /usr/local/bin/docker-compose
+    # - sudo chmod +x /usr/local/bin/docker-compose
     - docker-compose --version
   script:
     # - scp -r .env ./docker-compose.prod.yml root@${DEPLOY_SERVER_IP}:~/ # << for copying an env file over securely
@@ -78,12 +78,7 @@ deploy:
     - echo ${CI_REGISTRY_PASSWORD} | ssh root@$DEPLOY_SERVER_IP "docker login -u ${CI_REGISTRY_USER} --password-stdin ${CI_REGISTRY}"
     # - sudo curl -L "https://github.com/docker/compose/releases/download/1.22.0/docker-compose-$(uname -s)-$(uname -m)"  -o /usr/local/bin/docker-compose
     # - sudo chmod +x /usr/local/bin/docker-compose
-    - docker-compose -f docker-compose.prod.yml stop; \
-      docker-compose -f docker-compose.prod.yml rm client --force; \
-      docker-compose -f docker-compose.prod.yml rm nginx --force; \
-    - docker pull ${CI_REGISTRY}/${CI_PROJECT_PATH}/client:latest; \
-      docker pull ${CI_REGISTRY}/${CI_PROJECT_PATH}/nginx:latest; \
-      docker-compose -f docker-compose.prod.yml up -d"
+    - docker-compose -f docker-compose.prod.yml stop; docker-compose -f docker-compose.prod.yml rm client --force; docker-compose -f docker-compose.prod.yml rm nginx --force; docker pull ${CI_REGISTRY}/${CI_PROJECT_PATH}/client:latest; docker pull ${CI_REGISTRY}/${CI_PROJECT_PATH}/nginx:latest; docker-compose -f docker-compose.prod.yml up -d"
   # before_script:
   #  - apt-get update -y && apt-get install sshpass
   # script:
