@@ -15,3 +15,4 @@ client/out
 client/coverage
 client/bundles
 client/cypress
+**/__snapshots__/**
