@@ -1,9 +1,0 @@
-.git
-.results
-Jenkinsfile
-**/*Dockerfile*
-*docker-compose*
-**/node_modules
-**/package-lock.json
-client/bundles
-client/coverage
