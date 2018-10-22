@@ -61,29 +61,29 @@ deploy:
   environment: production
   services:
     - docker:dind
-  # before_script:
-  #   - mkdir -p ~/.ssh
-  #   - echo "$DEPLOY_SERVER_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa
-  #   - chmod 600 ~/.ssh/id_rsa
-  #   - eval "$(ssh-agent -s)"
-  #   - ssh-add ~/.ssh/id_rsa
-  #   - ssh-keyscan -H $DEPLOY_SERVER_IP >> ~/.ssh/known_hosts
-  # script:
-  #   # - scp -r .env ./docker-compose.prod.yml root@${DEPLOY_SERVER_IP}:~/
-  #   - scp -r ./docker-compose.prod.yml root@${DEPLOY_SERVER_IP}:~/
-  #   - ssh root@$DEPLOY_SERVER_IP "docker login -u ${CI_REGISTRY_USER} -p ${CI_REGISTRY_PASSWORD} ${CI_REGISTRY}
-  #   - docker-compose -f docker-compose.prod.yml stop; \
-  #     docker-compose -f docker-compose.prod.yml rm client --force; \
-  #     docker-compose -f docker-compose.prod.yml rm nginx --force; \
-  #     docker pull ${CI_REGISTRY}/${CI_PROJECT_PATH}/client:latest; \
-  #     docker pull ${CI_REGISTRY}/${CI_PROJECT_PATH}/nginx:latest; \
-  #     docker-compose -f docker-compose.prod.yml up -d"
   before_script:
-   - apt-get update -y && apt-get install sshpass
+    - mkdir -p ~/.ssh
+    - echo "$DEPLOY_SERVER_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa
+    - chmod 600 ~/.ssh/id_rsa
+    - eval "$(ssh-agent -s)"
+    - ssh-add ~/.ssh/id_rsa
+    - ssh-keyscan -H $DEPLOY_SERVER_IP >> ~/.ssh/known_hosts
   script:
-    # - printf "DATABASE_URL=${DATABASE_URL}\nPORT=80\n" > environment.env
-    # - sshpass -p "${DEPLOY_SERVER_PASS}" scp -o StrictHostKeyChecking=no -o PreferredAuthentications=password -o PubkeyAuthentication=no ./environment.env ${DEPLOY_SERVER_USER}@${DEPLOY_SERVER_IP}:~/
-    - sshpass -p "${DEPLOY_SERVER_PASS}" scp -o StrictHostKeyChecking=no -o PreferredAuthentications=password -o PubkeyAuthentication=no ./docker-compose.prod.yml ${DEPLOY_SERVER_USER}@${DEPLOY_SERVER_IP}:~/
-    - sshpass -p $DEPLOY_SERVER_PASS ssh -o StrictHostKeyChecking=no -o PreferredAuthentications=password -o PubkeyAuthentication=no $DEPLOY_SERVER_USER@$DEPLOY_SERVER_IP "echo ${DEPLOY_SERVER_PASS} | sudo -S ls && docker login -u ${CI_REGISTRY_USER} -p ${CI_REGISTRY_PASSWORD} ${CI_REGISTRY}; \
-      sudo docker-compose -f docker-compose.prod.yml stop; sudo docker-compose -f docker-compose.prod.yml rm client --force; \
-      sudo docker pull ${CI_REGISTRY}/${CI_PROJECT_PATH}:latest; sudo docker-compose -f docker-compose.prod.yml up -d"
+    # - scp -r .env ./docker-compose.prod.yml root@${DEPLOY_SERVER_IP}:~/
+    - scp -r ./docker-compose.prod.yml root@${DEPLOY_SERVER_IP}:~/
+    - ssh root@$DEPLOY_SERVER_IP "docker login -u ${CI_REGISTRY_USER} -p ${CI_REGISTRY_PASSWORD} ${CI_REGISTRY}
+    # - docker-compose -f docker-compose.prod.yml stop; \
+    #   docker-compose -f docker-compose.prod.yml rm client --force; \
+    #   docker-compose -f docker-compose.prod.yml rm nginx --force; \
+    -  docker pull ${CI_REGISTRY}/${CI_PROJECT_PATH}/client:latest; \
+      docker pull ${CI_REGISTRY}/${CI_PROJECT_PATH}/nginx:latest; \
+      docker-compose -f docker-compose.prod.yml up -d"
+  # before_script:
+  #  - apt-get update -y && apt-get install sshpass
+  # script:
+  #   # - printf "DATABASE_URL=${DATABASE_URL}\nPORT=80\n" > environment.env
+  #   # - sshpass -p "${DEPLOY_SERVER_PASS}" scp -o StrictHostKeyChecking=no -o PreferredAuthentications=password -o PubkeyAuthentication=no ./environment.env ${DEPLOY_SERVER_USER}@${DEPLOY_SERVER_IP}:~/
+  #   - sshpass -p "${DEPLOY_SERVER_PASS}" scp -o StrictHostKeyChecking=no -o PreferredAuthentications=password -o PubkeyAuthentication=no ./docker-compose.prod.yml ${DEPLOY_SERVER_USER}@${DEPLOY_SERVER_IP}:~/
+  #   - sshpass -p $DEPLOY_SERVER_PASS ssh -o StrictHostKeyChecking=no -o PreferredAuthentications=password -o PubkeyAuthentication=no $DEPLOY_SERVER_USER@$DEPLOY_SERVER_IP "echo ${DEPLOY_SERVER_PASS} | sudo -S ls && docker login -u ${CI_REGISTRY_USER} -p ${CI_REGISTRY_PASSWORD} ${CI_REGISTRY}; \
+  #     sudo docker-compose -f docker-compose.prod.yml stop; sudo docker-compose -f docker-compose.prod.yml rm client --force; \
+  #     sudo docker pull ${CI_REGISTRY}/${CI_PROJECT_PATH}:latest; sudo docker-compose -f docker-compose.prod.yml up -d"
