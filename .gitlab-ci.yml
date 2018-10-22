@@ -55,7 +55,7 @@ release:
     - "docker logout $CI_REGISTRY"
 deploy:
   stage: deploy
-  image: gitlab/dind:latest
+  image: gitlab/gitlab-runner:latest
   only:
     - "production"
   environment: production
