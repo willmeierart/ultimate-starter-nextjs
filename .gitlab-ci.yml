@@ -68,11 +68,13 @@ deploy:
     - eval "$(ssh-agent -s)"
     - ssh-add ~/.ssh/id_rsa
     - ssh-keyscan -H $DEPLOY_SERVER_IP >> ~/.ssh/known_hosts
-    - sudo apt-get install docker-compose
+    - sudo curl -L "https://github.com/docker/compose/releases/download/1.22.0/docker-compose-$(uname -s)-$(uname -m)"  -o /usr/local/bin/docker-compose
+    - sudo chmod +x /usr/local/bin/docker-compose
   script:
     # - scp -r .env ./docker-compose.prod.yml root@${DEPLOY_SERVER_IP}:~/ # << for copying an env file over securely
     - scp -r ./docker-compose.prod.yml root@${DEPLOY_SERVER_IP}:~/
-    - ssh root@$DEPLOY_SERVER_IP "docker login -u ${CI_REGISTRY_USER} -p ${CI_REGISTRY_PASSWORD} ${CI_REGISTRY}"
+    # - ssh root@$DEPLOY_SERVER_IP "docker login -u ${CI_REGISTRY_USER} -p ${CI_REGISTRY_PASSWORD} ${CI_REGISTRY}"
+    - echo ${CI_REGISTRY_PASSWORD} | ssh root@$DEPLOY_SERVER_IP "docker login -u ${CI_REGISTRY_USER} --password-stdin ${CI_REGISTRY}"
     # - sudo curl -L "https://github.com/docker/compose/releases/download/1.22.0/docker-compose-$(uname -s)-$(uname -m)"  -o /usr/local/bin/docker-compose
     # - sudo mv ./docker-compose /usr/bin/docker-compose
     # - sudo chmod +x /usr/bin/docker-compose
