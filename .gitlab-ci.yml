@@ -69,7 +69,7 @@ deploy:
     - ssh-add ~/.ssh/id_rsa
     - ssh-keyscan -H $DEPLOY_SERVER_IP >> ~/.ssh/known_hosts
   script:
-    # - scp -r .env ./docker-compose.prod.yml root@${DEPLOY_SERVER_IP}:~/
+    # - scp -r .env ./docker-compose.prod.yml root@${DEPLOY_SERVER_IP}:~/ # << for copying an env file over securely
     - scp -r ./docker-compose.prod.yml root@${DEPLOY_SERVER_IP}:~/
     - ssh root@$DEPLOY_SERVER_IP "docker login -u ${CI_REGISTRY_USER} -p ${CI_REGISTRY_PASSWORD} ${CI_REGISTRY}"
     - docker-compose -f docker-compose.prod.yml stop; \
