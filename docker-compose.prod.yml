@@ -2,12 +2,12 @@ version: '2'
 services:
   nginx:
     restart: always
-    image: registry.gitlab.com/internal-stuff/development-resources/next-starter-lc/nginx
+    image: registry.gitlab.com/internal-stuff/development-resources/xxx_project_name_xxx/nginx
     ports:
       - '80:80'
       - '443:443'
   client:
-    image: registry.gitlab.com/internal-stuff/development-resources/next-starter-lc/client
+    image: registry.gitlab.com/internal-stuff/development-resources/xxx_project_name_xxx/client
     expose:
       - '80'
     command: ["npm", "run", "start"]

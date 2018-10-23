@@ -1,3 +1,0 @@
-[[runners]]
-	[runners.docker]
-		privileged = true

@@ -50,8 +50,8 @@ push:
     - "docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY"
   script:
     - "docker build -t ${CI_REGISTRY}/${CI_PROJECT_PATH}/client:latest --pull ."
-    - "docker build -t ${CI_REGISTRY}/${CI_PROJECT_PATH}/nginx:latest --pull ./_nginx"
-    # - "docker build -t ${CI_REGISTRY}/${CI_PROJECT_PATH}/api:latest --pull ./_api"
+    - "docker build -t ${CI_REGISTRY}/${CI_PROJECT_PATH}/nginx:latest --pull ./__nginx"
+    # - "docker build -t ${CI_REGISTRY}/${CI_PROJECT_PATH}/api:latest --pull ./__api"
     - "docker push ${CI_REGISTRY}/${CI_PROJECT_PATH}/client:latest"
     - "docker push ${CI_REGISTRY}/${CI_PROJECT_PATH}/nginx:latest"
     # - "docker push ${CI_REGISTRY}/${CI_PROJECT_PATH}/api:latest"
@@ -94,4 +94,10 @@ production:
   script:
     # - scp -r .env ./docker-compose.prod.yml root@${PRODUCTION_SERVER_IP}:~/ # << for copying an env file over securely
     - scp -r ./docker-compose.prod.yml root@${PRODUCTION_SERVER_IP}:~/
-    - echo ${CI_REGISTRY_PASSWORD} | ssh root@$PRODUCTION_SERVER_IP "docker login -u ${CI_REGISTRY_USER} --password-stdin ${CI_REGISTRY}; docker-compose version; sudo apt-get install python-pip -y && pip install docker-compose && docker-compose version; docker-compose -f docker-compose.prod.yml stop; docker-compose -f docker-compose.prod.yml rm client --force; docker-compose -f docker-compose.prod.yml rm nginx --force; docker pull ${CI_REGISTRY}/${CI_PROJECT_PATH}/client:latest; docker pull ${CI_REGISTRY}/${CI_PROJECT_PATH}/nginx:latest; docker-compose -f docker-compose.prod.yml up -d"
+    # - echo ${CI_REGISTRY_PASSWORD} | ssh root@$PRODUCTION_SERVER_IP "docker login -u ${CI_REGISTRY_USER} --password-stdin ${CI_REGISTRY}; docker-compose version; sudo apt-get install python-pip -y && pip install docker-compose && docker-compose version; docker-compose -f docker-compose.prod.yml stop; docker-compose -f docker-compose.prod.yml rm client --force; docker-compose -f docker-compose.prod.yml rm nginx --force; docker pull ${CI_REGISTRY}/${CI_PROJECT_PATH}/client:latest; docker pull ${CI_REGISTRY}/${CI_PROJECT_PATH}/nginx:latest; docker-compose -f docker-compose.prod.yml up -d"
+    - echo ${CI_REGISTRY_PASSWORD} | ssh root@$PRODUCTION_SERVER_IP \ # see if works
+      docker login -u ${CI_REGISTRY_USER} --password-stdin ${CI_REGISTRY}; \
+      docker-compose down \
+      docker pull ${CI_REGISTRY}/${CI_PROJECT_PATH}/client:latest; \
+      docker pull ${CI_REGISTRY}/${CI_PROJECT_PATH}/nginx:latest; \
+      docker-compose -f docker-compose.prod.yml up -d
