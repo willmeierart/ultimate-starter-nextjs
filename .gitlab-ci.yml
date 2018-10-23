@@ -14,18 +14,17 @@ build:
   only:
     - "development"
     - "master"
-  # variables:
-  #   NODE_ENV: "development"
   before_script:
     - apk add --update bash
     - apk add --update git && rm -rf /tmp/* /var/cache/apk/*
     - npm install 
   script:
-    - npm run build
+    # - npm run build
+    - npm run export
   artifacts:
     paths:
       - .next
-      # - .out
+      - .out
 test:
   stage: test
   image: node:alpine
