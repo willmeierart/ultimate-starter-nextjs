@@ -8,8 +8,12 @@ services:
     #   context: ./_nginx
     ports:
       - '80:80'
+      - '443:443'
   client:
     image: registry.gitlab.com/internal-stuff/development-resources/next-starter-lc/client
+    expose:
+      - '80'
+    command: ["npm", "run", "start"]
     # build:
     #   dockerfile: Dockerfile.dev
     #   context: .

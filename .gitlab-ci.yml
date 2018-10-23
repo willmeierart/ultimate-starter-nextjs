@@ -5,11 +5,15 @@ cache:
 stages:
   - build
   - test
-  - release
+  - push
+  - staging
   - deploy
 build:
   stage: build
   image: node:alpine
+  only:
+    - "development"
+    - "master"
   # variables:
   #   NODE_ENV: "development"
   before_script:
@@ -25,16 +29,18 @@ build:
 test:
   stage: test
   image: node:alpine
+  only:
+    - "development"
+    - "master"
   variables:
     NODE_ENV: "test"
   script:
     - npm run test:coverage -- -u
-release:
-  stage: release
+push:
+  stage: push
   image: docker:latest
   only:
     - "master"
-    - "production"
   services:
     - docker:dind
   variables:
@@ -52,8 +58,27 @@ release:
     # - "docker push ${CI_REGISTRY}/${CI_PROJECT_PATH}/api:latest"
   after_script:
     - "docker logout $CI_REGISTRY"
-deploy:
-  stage: deploy
+staging:
+  stage: staging
+  image: gitlab/dind:latest
+  only:
+    - "staging"
+  environment: staging
+  services:
+    - docker:dind
+  before_script:
+    - mkdir -p ~/.ssh
+    - echo "$STAGING_SERVER_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa
+    - chmod 600 ~/.ssh/id_rsa
+    - eval "$(ssh-agent -s)"
+    - ssh-add ~/.ssh/id_rsa
+    - ssh-keyscan -H $STAGING_SERVER_IP >> ~/.ssh/known_hosts
+  script:
+    # - scp -r .env ./docker-compose.stage.yml root@${STAGING_SERVER_IP}:~/ # << for copying an env file over securely
+    - scp -r ./docker-compose.stage.yml root@${STAGING_SERVER_IP}:~/
+    - echo ${CI_REGISTRY_PASSWORD} | ssh root@$STAGING_SERVER_IP "docker login -u ${CI_REGISTRY_USER} --password-stdin ${CI_REGISTRY}; docker-compose version; sudo apt-get install python-pip -y && pip install docker-compose && docker-compose version; docker-compose -f docker-compose.stage.yml stop; docker-compose -f docker-compose.stage.yml rm client --force; docker-compose -f docker-compose.stage.yml rm nginx --force; docker pull ${CI_REGISTRY}/${CI_PROJECT_PATH}/client:latest; docker pull ${CI_REGISTRY}/${CI_PROJECT_PATH}/nginx:latest; docker-compose -f docker-compose.stage.yml up -d"
+production:
+  stage: production
   image: gitlab/dind:latest
   only:
     - "production"
@@ -62,12 +87,12 @@ deploy:
     - docker:dind
   before_script:
     - mkdir -p ~/.ssh
-    - echo "$DEPLOY_SERVER_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa
+    - echo "$PRODUCTION_SERVER_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa
     - chmod 600 ~/.ssh/id_rsa
     - eval "$(ssh-agent -s)"
     - ssh-add ~/.ssh/id_rsa
-    - ssh-keyscan -H $DEPLOY_SERVER_IP >> ~/.ssh/known_hosts
+    - ssh-keyscan -H $PRODUCTION_SERVER_IP >> ~/.ssh/known_hosts
   script:
-    # - scp -r .env ./docker-compose.prod.yml root@${DEPLOY_SERVER_IP}:~/ # << for copying an env file over securely
-    - scp -r ./docker-compose.prod.yml root@${DEPLOY_SERVER_IP}:~/
-    - echo ${CI_REGISTRY_PASSWORD} | ssh root@$DEPLOY_SERVER_IP "docker login -u ${CI_REGISTRY_USER} --password-stdin ${CI_REGISTRY}; docker-compose version; sudo apt-get install python-pip -y && pip install docker-compose && docker-compose version; docker-compose -f docker-compose.prod.yml stop; docker-compose -f docker-compose.prod.yml rm client --force; docker-compose -f docker-compose.prod.yml rm nginx --force; docker pull ${CI_REGISTRY}/${CI_PROJECT_PATH}/client:latest; docker pull ${CI_REGISTRY}/${CI_PROJECT_PATH}/nginx:latest; docker-compose -f docker-compose.prod.yml up -d"
+    # - scp -r .env ./docker-compose.prod.yml root@${PRODUCTION_SERVER_IP}:~/ # << for copying an env file over securely
+    - scp -r ./docker-compose.prod.yml root@${PRODUCTION_SERVER_IP}:~/
+    - echo ${CI_REGISTRY_PASSWORD} | ssh root@$PRODUCTION_SERVER_IP "docker login -u ${CI_REGISTRY_USER} --password-stdin ${CI_REGISTRY}; docker-compose version; sudo apt-get install python-pip -y && pip install docker-compose && docker-compose version; docker-compose -f docker-compose.prod.yml stop; docker-compose -f docker-compose.prod.yml rm client --force; docker-compose -f docker-compose.prod.yml rm nginx --force; docker pull ${CI_REGISTRY}/${CI_PROJECT_PATH}/client:latest; docker pull ${CI_REGISTRY}/${CI_PROJECT_PATH}/nginx:latest; docker-compose -f docker-compose.prod.yml up -d"

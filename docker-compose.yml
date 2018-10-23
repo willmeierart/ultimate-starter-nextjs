@@ -1,12 +1,12 @@
 version: '3'
 services:
-  # nginx:
-  #   restart: always
-  #   build:
-  #     dockerfile: Dockerfile.dev
-  #     context: ./_nginx
-  #   ports:
-  #     - '3001:80'
+  nginx:
+    restart: always
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./_nginx
+    ports:
+      - '90:80'
   client:
     build:
       dockerfile: Dockerfile.dev
@@ -15,8 +15,8 @@ services:
       - /node_modules
       - .:/client
     # comment out ports if using nginx:
-    ports: 
-      - '80:3000'
+    # ports: 
+    #   - '95:3000'
   # api:
   #   build:
   #     dockerfile: Dockerfile.dev
