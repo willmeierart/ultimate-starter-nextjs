@@ -7,7 +7,7 @@ stages:
   - test
   - push
   - staging
-  - deploy
+  - production
 build:
   stage: build
   image: node:alpine
