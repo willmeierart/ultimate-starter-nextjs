@@ -3,9 +3,6 @@ services:
   nginx:
     restart: always
     image: registry.gitlab.com/internal-stuff/development-resources/next-starter-lc/nginx
-    # build:
-    #   dockerfile: Dockerfile.dev
-    #   context: ./_nginx
     ports:
       - '80:80'
       - '443:443'
@@ -14,17 +11,5 @@ services:
     expose:
       - '80'
     command: ["npm", "run", "start"]
-    # build:
-    #   dockerfile: Dockerfile.dev
-    #   context: .
-    # volumes:
-    #   - /node_modules
-    #   - .:/client
   # api:
-  #   build:
-  #     dockerfile: Dockerfile.dev
-  #     context: ./api
-  #   volumes:
-  #     - /app/node_modules
-  #     - ./api:/api
   # worker:  
