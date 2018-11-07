@@ -11,41 +11,42 @@ const app = next({ dev })
 const port = process.env.PORT || 3000
 const handle = app.getRequestHandler()
 
-app.prepare()
-  .then(() => {
-    const server = express() // just an express server
+app.prepare().then(() => {
+	const server = express() // just an express server
 
-    sitemap({ server })
+	sitemap({ server })
 
-    server.use(compression())
+	server.use(compression())
 
-    server.use('/static', express.static('static')) // for sitemap
+	server.use('/static', express.static('static')) // for sitemap
 
-    Router.forEachPattern((page, pattern, defaultParams) => // from next-url-prettifier
-      server.get(pattern, (req, res) => app.render(req, res, `/${page}`,
-        Object.assign({}, defaultParams, req.query, req.params)
-      ))
-    )
+	Router.forEachPattern((
+		page,
+		pattern,
+		defaultParams // from next-url-prettifier
+	) =>
+		server.get(pattern, (req, res) =>
+			app.render(req, res, `/${page}`, Object.assign({}, defaultParams, req.query, req.params))
+		)
+	)
 
-    server.get('*', (req, res) => {
-      const parsedUrl = parse(req.url, true)
-      const { pathname } = parsedUrl
-      if (pathname === '/service-worker.js') { // for next-offline
-        const filePath = join(__dirname, '.next', pathname)
-        app.serveStatic(req, res, filePath)
-      } else {
-        handle(req, res)
-      }
-    })
+	server.get('*', (req, res) => {
+		const parsedUrl = parse(req.url, true)
+		const { pathname } = parsedUrl
+		if (pathname === '/service-worker.js') {
+			// for next-offline
+			const filePath = join(__dirname, '.next', pathname)
+			app.serveStatic(req, res, filePath)
+		} else {
+			handle(req, res)
+		}
+	})
 
-    server.listen(port, (err) => {
-      if (err) throw err
-      console.log(`> Ready on http://localhost:${port}`)
-    })
-  })
-
-
-
+	server.listen(port, err => {
+		if (err) throw err
+		console.log(`> Ready on http://localhost:${port}`)
+	})
+})
 
 // other way:
 
